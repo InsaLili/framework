@@ -22,26 +22,26 @@ routerTool.run(function($rootScope, $state, $stateParams) {
  * @return {[type]}
  */
 routerTool.config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.when('', '/home');
+    $urlRouterProvider.otherwise('/index');
     $stateProvider
-        .state('tool', {
-            url: '/home',
-            templateUrl: 'tool/views/home.html'
+        .state('index', {
+            url: '',
+            templateUrl: 'views/home.html'
         })
         .state('step1', {
             url: '/step1',
-            templateUrl: 'tool/views/step1.html'
+            templateUrl: 'views/step1.html'
         })        
         .state('step2', {
             url: '/step2',
-            templateUrl: 'tool/views/step2.html'
+            templateUrl: 'views/step2.html'
         })        
         .state('step3', {
             url: '/step3',
-            templateUrl: 'tool/views/step3.html'
+            templateUrl: 'views/step3.html'
         })
         .state('step4', {
             url: '/step4',
-            templateUrl: 'tool/views/step4.html'
+            templateUrl: 'views/step4.html'
         })
 });
