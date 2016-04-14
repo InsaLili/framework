@@ -11,7 +11,7 @@
         <!-- list of the existing activities -->
         <div class="col-md-12">
           <div class="docList" ng-repeat="app in apps track by $index">
-            <button class="btn btn-primary chooseApp" ng-click="chooseApp($event,$index)">{{app._id}}</button>
+            <button class="btn btn-primary chooseApp" ng-click="chooseApp($event,app._id)">{{app._id}}</button>
             <a class="btn btn-default" ng-click="editApp($index)" ui-sref="step1"><span class="glyphicon glyphicon-edit"></span></a>
             <a class="btn btn-default" ng-click="deleteApp(app,$index)"><span class="glyphicon glyphicon-trash"></span></a>
           </div>
