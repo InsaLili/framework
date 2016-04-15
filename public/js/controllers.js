@@ -273,7 +273,18 @@ mapSetModule.controller('CtrlStep1', [ "$scope", "DataService",function($scope, 
 			}
 		}
 	});
+	// preload the format of a new marker
+	creatMarker = function(){
+		$scope.newMarker={};
+		$scope.newMarker.draggable = true;
+		$scope.newMarker.lat = $scope.mapstep1.map.lat;
+		$scope.newMarker.lng = $scope.mapstep1.map.lng;
 
+		$scope.newMarker.icon={};
+		$scope.newMarker.icon.type = "makiMarker";
+		$scope.newMarker.icon.color = "#E91E63";
+		$scope.newMarker.icon.size = "l";
+	}
 	// UPDATE coordinates
 	$scope.$on("leafletDirectiveMarker.dragend", function(event, args){
 		var index = parseInt(args.modelName);
@@ -287,17 +298,8 @@ mapSetModule.controller('CtrlStep1', [ "$scope", "DataService",function($scope, 
 		console.log("delete");
 	}
 	$scope.addMarker = function(){
-		$scope.newMarker={};
-		$scope.newMarker.draggable = true;
-		$scope.newMarker.lat = $scope.mapstep1.map.lat;
-		$scope.newMarker.lng = $scope.mapstep1.map.lng;
-
-		$scope.newMarker.icon={};
-		$scope.newMarker.icon.type = "makiMarker";
-		$scope.newMarker.icon.color = "#E91E63";
-		$scope.newMarker.icon.size = "l";
-
 		$scope.mapstep1.markers.push($scope.newMarker);
+		creatMarker();
 	}
 	$scope.addCri = function(){
 		$scope.mapstep1.cris.teacher.push($scope.newCri);
@@ -348,6 +350,8 @@ mapSetModule.controller('CtrlStep1', [ "$scope", "DataService",function($scope, 
 	$scope.toStep2 = function(){
 		DataService.apps[_index].mapstep1 = $scope.mapstep1;
 	}
+
+	creatMarker();
 }]);
 
 mapSetModule.controller('CtrlStep2', [ "$scope", "DataService",function($scope, DataService) {

@@ -50,7 +50,7 @@
 								<div class="panel panel-default" ng-repeat="marker in mapstep1.markers">
 									<div class="panel-heading">
 										<h4 class="panel-title">
-											<a data-toggle="collapse"data-target="#marker-{{$index}}">Marker {{$index+1}}</a>
+											<a data-toggle="collapse"data-target="#marker-{{$index}}" ng-bind="marker.name"></a>
 											<button type="button" class="deleteMarkerBtn btn btn-default btn-xs pull-right" ng-click="deleteItem($event,marker,mapstep1.markers)"><span class="glyphicon glyphicon-trash"></span></button>
 										</h4>
 									</div>
@@ -108,7 +108,64 @@
 									</div>
 								</div>
 							</div> 
-							<button class="btn btn-info" ng-click="addMarker()"><span class="glyphicon glyphicon-plus"></span>  Add marker</button>
+							<button class="btn btn-primary" data-toggle="collapse" data-target="#newmarker">New marker</button>
+							<div id="newmarker" class="panel-collapse collapse" >
+								<form class="form-horizontal markerArea" role="form" name="form">
+									<div class="form-group">
+										<label class="control-label col-md-3">
+											Name
+										</label>
+										<div class="col-md-9">
+											<input type="text" class="form-control" ng-model="newMarker.name">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3">
+											Longtitude
+										</label>
+										<div class="col-md-9">
+											<input type="number" step="any" class="form-control" placeholder="ex: 12.3456" ng-model="newMarker.lng">
+										</div>
+									</div>					
+									<div class="form-group">
+										<label class="control-label col-md-3">
+											Laititude
+										</label>
+										<div class="col-md-9">
+											<input type="number" step="any" class="form-control" placeholder="ex: 12.3456" ng-model="newMarker.lat">
+										</div>
+									</div>	
+									<div class="form-group">
+										<label class="control-label col-md-3">
+											Marker symbol
+										</label>
+										<div class="col-md-9">
+											<input type="text" class="form-control" placeholder="number (0-99); or one lower case letter" ng-model="newMarker.icon.icon">
+										</div>
+									</div>	
+									<div class="form-group">
+										<label class="control-label col-md-3">
+											Add img (optional)
+										</label>
+										<div class="col-md-9">
+											<input type="file" class="form-control" accept="image/*" onchange="angular.element(this).scope().handleMarkerFiles(this)">
+										</div>
+									</div>					
+									<div class="form-group">
+										<label class="control-label col-md-3">
+											Data
+										</label>
+										<div class="col-md-9">
+											<textarea class="form-control" ng-model="newMarker.data" rows="4"></textarea>
+										</div>
+									</div>
+									<div class="form-group saveBtn">
+										<div class="col-md-12">
+											<button class="btn btn-default pull-right" ng-click="addMarker()"><span class="glyphicon glyphicon-plus"></span>  Add</button>
+										</div>
+									</div>
+								</form>
+							</div>
 						</div>
 					</div>
 					<!-- evaluating criteria -->
@@ -148,7 +205,7 @@
 									</div>
 								</div>
 							</div>
-							<button class="btn btn-info"  data-toggle="collapse" data-target="#newCri"><span class="glyphicon glyphicon-plus"></span>  Add criteria</button>
+							<button class="btn btn-primary"  data-toggle="collapse" data-target="#newCri">New criteria</button>
 							<div id="newCri" class="panel-collapse collapse" >
 								<form class="form-horizontal markerArea" role="form" name="form">
 									<div class="form-group">
@@ -161,7 +218,7 @@
 									</div>
 									<div class="form-group saveBtn">
 										<div class="col-md-12">
-											<button class="btn btn-default pull-right" ng-click="addCri()"><span class="glyphicon glyphicon-floppy-disk"></span>  Save</button>
+											<button class="btn btn-default pull-right" ng-click="addCri()"><span class="glyphicon glyphicon-plus"></span>  Add</button>
 										</div>
 									</div>
 								</form>
@@ -216,7 +273,7 @@
 									</div>
 								</div>
 							</div>
-							<button class="btn btn-info" data-toggle="collapse" data-target="#newInfo"><span class="glyphicon glyphicon-plus"></span>  Add information</button>
+							<button class="btn btn-primary" data-toggle="collapse" data-target="#newInfo">New information</button>
 							<div id="newInfo" class="panel-collapse collapse" >
 								<form class="form-horizontal markerArea" role="form" name="form">
 									<div class="form-group">
@@ -227,14 +284,14 @@
 											<input type="text" class="form-control" ng-model="newInfo.name">
 										</div>
 									</div>
-									<div class="form-group">
+									<!-- <div class="form-group">
 										<label class="control-label col-md-3">
 											Add img (optional)
 										</label>
 										<div class="col-md-9">
 											<input type="file" class="form-control" accept="image/*" onchange="angular.element(this).scope().handleFiles(this, info)">
 										</div>
-									</div>					
+									</div>	 -->				
 									<div class="form-group">
 										<label class="control-label col-md-3">
 											Data
@@ -245,7 +302,7 @@
 									</div>
 									<div class="form-group saveBtn">
 										<div class="col-md-12">
-											<button class="btn btn-default pull-right" ng-click="addInfo()"><span class="glyphicon glyphicon-floppy-disk"></span>  Save</button>
+											<button class="btn btn-default pull-right" ng-click="addInfo()"><span class="glyphicon glyphicon-plus"></span>  Add</button>
 										</div>
 									</div>
 								</form>
