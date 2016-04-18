@@ -13,13 +13,13 @@
 			<p>In this part, you will define how students are going to carry on these tasks to finish the activity.</p>
 		</div>
 		<!-- set the corrdination of the map -->
-		<div class="jumbotron" id="items">
+		<form class="jumbotron"  data-toggle="validator"  id="items">
 			<div class="row">
 				<div class="col-md-offset-1 col-md-10">
 					<div class="row item">
-							<div class="radio col-md-4">
+							<div class="row radio col-md-4">
 								<h4><input type="radio" name="sequence" value="restricted" ng-model="mapstep2.seqtype">Seq1: Restricted sequence</h4>
-								<div class="caption">
+								<div class="row caption">
 									<ul>
 										<li>T0 (optional): define criteria for evaluating alternatives;</li>
 										<li>T1: analyze and evaluate each alternative;</li>
@@ -31,184 +31,212 @@
 							</div>
 							<div class="col-md-8" ng-show="mapstep2.seqtype == 'restricted'">
 								<div class="panel-group">
-									<div class="panel panel-default">
-										<!-- optional step0 -->
-										<div class="panel-heading">
-											<h4 class="panel-title">
-											    <input type="checkbox" ng-model="mapstep2.reseq.s0.exist">
-											    <a data-toggle="collapse" data-target="#s0t0" ng-class="{disabled: !mapstep2.reseq.s0.exist}">Step0 (T0, optional)
-											    </a>
-											</h4>
-										</div>
-										<div id="s0t0" class="panel-collapse collapse" ng-show="mapstep2.reseq.s0.exist">
-											<form class="form-horizontal markerArea" role="form">
-												<!-- cuostomized title -->
-												<div class="form-group">
-													<label class="control-label col-md-3">
-														Title
-													</label>
-													<div class="col-md-9">
-														<input type="text" class="form-control" ng-model="mapstep2.reseq.s0.title">
+									<div class="row steps">
+										<div class="col-md-11">
+											<div class="panel panel-default">
+												<!-- optional step0 -->
+												<div class="panel-heading">
+													<h4 class="panel-title">
+													    <input type="checkbox" ng-model="mapstep2.reseq.s0.exist">
+													    <a data-toggle="collapse" data-target="#s0t0" ng-class="{disabled: !mapstep2.reseq.s0.exist}">Step0 (T0, optional)
+													    </a>
+													</h4>
+												</div>
+												<div id="s0t0" class="panel-collapse collapse" ng-show="mapstep2.reseq.s0.exist">
+													<div class="form-horizontal markerArea" role="form">
+														<!-- cuostomized title -->
+														<div class="form-group">
+															<label class="control-label col-md-3">
+																Title
+															</label>
+															<div class="col-md-9">
+																<input type="text" class="form-control" ng-model="mapstep2.reseq.s0.title">
+															</div>
+														</div>
+														<!-- pop-up dialogue -->
+														<div class="form-group">
+															<label class="control-label col-md-3">
+																Guidance in the 
+																<br>
+																pop-up dialogue
+															</label>
+															<div class="col-md-9">
+																<textarea class="form-control" ng-model="mapstep2.reseq.s0.dlg" placeholder="Detailed description in the pop-up dialog" rows="4"></textarea>
+															</div>
+														</div>					
 													</div>
 												</div>
-												<!-- pop-up dialogue -->
-												<div class="form-group">
-													<label class="control-label col-md-3">
-														Guidance in the 
-														<br>
-														pop-up dialogue
-													</label>
-													<div class="col-md-9">
-														<textarea class="form-control" ng-model="mapstep2.reseq.s0.dlg" placeholder="Detailed description in the pop-up dialog" rows="4"></textarea>
-													</div>
-												</div>					
-											</form>
+											</div>
+										</div>
+										<div class="col-md-1" ng-if="mapstep2.reseq.s0.exist">
+											<span class="glyphicon glyphicon-ok-sign" ng-class="{true:'green', false:'grey'}[mapstep2.reseq.s0.title]"></span>
 										</div>
 									</div>
-									<div class="panel panel-default">
-										<div class="panel-heading">
-											<h4 class="panel-title">
-												<a data-toggle="collapse" data-target="#s1t1">Step1 (T1)</a>
-											</h4>
+									<div class="row steps">
+										<div class="col-md-11">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-target="#s1t1">Step1 (T1)</a>
+													</h4>
+												</div>
+												<div id="s1t1" class="panel-collapse collapse" >
+													<div class="form-horizontal markerArea"role="form">
+														<!-- customized title -->
+														<div class="form-group">
+															<label class="control-label col-md-3">
+																Title
+															</label>
+															<div class="col-md-9">
+																<input type="text" class="form-control" ng-model="mapstep2.reseq.s1.title">
+															</div>
+														</div>
+														<!-- pop-up dialogue -->
+														<div class="form-group">
+															<label class="control-label col-md-3">
+																Guidance in the 
+																<br>
+																pop-up dialogue
+															</label>
+															<div class="col-md-9">
+																<textarea class="form-control" ng-model="mapstep2.reseq.s1.dlg" placeholder="Detailed description in the pop-up dialog" rows="4"></textarea>
+															</div>
+														</div>		
+														<!-- choose evaluation condition -->
+														<div class="form-group">
+															<h5 class="col-md-12">
+																Choose which evaluation condition to use to enable step2:
+															</h5>
+															<div class="col-md-12 btn-group">
+																<div class="radio col-md-12">
+																	<label><input type="radio" name="t1eval" value="individual" ng-model="mapstep2.reseq.s1.eval">E1: Each student needs to evaluate all the alternatives</label>
+																</div>
+																<div class="radio col-md-12">
+																	<label><input type="radio" name="t1eval" value="group" ng-model="mapstep2.reseq.s1.eval">E2: A group needs to evaluate all the alternatives</label>
+																</div>
+															</div>
+														</div>	
+														<!-- choose evaluation scale -->
+														<div class="form-group">
+															<div class="col-md-6">
+																<h5>Indentify the evaluation scale (number of stars):</h5>
+															</div>
+															<div class="col-md-2">
+																<input type="number" step="any" class="form-control" ng-model="mapstep2.reseq.s1.scale" required>
+															</div>
+															<div class="col-md-2">
+																<h5>stars</h5>
+															</div>
+														</div>
+														
+													</div>
+												</div>
+											</div>
 										</div>
-										<div id="s1t1" class="panel-collapse collapse" >
-											<form class="form-horizontal markerArea" role="form">
-												<!-- customized title -->
-												<div class="form-group">
-													<label class="control-label col-md-3">
-														Title
-													</label>
-													<div class="col-md-9">
-														<input type="text" class="form-control" ng-model="mapstep2.reseq.s1.title">
-													</div>
-												</div>
-												<!-- pop-up dialogue -->
-												<div class="form-group">
-													<label class="control-label col-md-3">
-														Guidance in the 
-														<br>
-														pop-up dialogue
-													</label>
-													<div class="col-md-9">
-														<textarea class="form-control" ng-model="mapstep2.reseq.s1.dlg" placeholder="Detailed description in the pop-up dialog" rows="4"></textarea>
-													</div>
-												</div>		
-												<!-- choose evaluation condition -->
-												<div class="form-group">
-													<h5 class="col-md-12">
-														Choose which evaluation condition to use to enable step2:
-													</h5>
-													<div class="col-md-12 btn-group">
-														<div class="radio col-md-12">
-															<label><input type="radio" name="t1eval" value="individual" ng-model="mapstep2.reseq.s1.eval">E1: Each student needs to evaluate all the alternatives</label>
-														</div>
-														<div class="radio col-md-12">
-															<label><input type="radio" name="t1eval" value="group" ng-model="mapstep2.reseq.s1.eval">E2: A group needs to evaluate all the alternatives</label>
-														</div>
-													</div>
-												</div>	
-												<!-- choose evaluation scale -->
-												<div class="form-group">
-													<div class="col-md-6">
-														<h5>Indentify the evaluation scale (number of stars):</h5>
-													</div>
-													<div class="col-md-2">
-														<input type="number" step="any" class="form-control" ng-model="mapstep2.reseq.s1.scale">
-													</div>
-													<div class="col-md-2">
-														<h5>stars</h5>
-													</div>
-												</div>
-												
-											</form>
+										<div class="col-md-1">
+											not done
 										</div>
 									</div>
-									<div class="panel panel-default">
-										<div class="panel-heading">
-											<h4 class="panel-title">
-												<a data-toggle="collapse" data-target="#s2t2">Step2 (T2)</a>
-											</h4>
-										</div>
-										<div id="s2t2" class="panel-collapse collapse" >
-											<form class="form-horizontal markerArea" role="form">
-												<!-- customized title -->
-												<div class="form-group">
-													<label class="control-label col-md-3">
-														Title
-													</label>
-													<div class="col-md-9">
-														<input type="text" class="form-control" ng-model="mapstep2.reseq.s2.title">
+									<div class="row steps">
+										<div class="col-md-11">
+											<div class="panel panel-default">
+											<div class="panel-heading">
+												<h4 class="panel-title">
+													<a data-toggle="collapse" data-target="#s2t2">Step2 (T2)</a>
+												</h4>
+											</div>
+											<div id="s2t2" class="panel-collapse collapse" >
+												<div class="form-horizontal markerArea" role="form">
+													<!-- customized title -->
+													<div class="form-group">
+														<label class="control-label col-md-3">
+															Title
+														</label>
+														<div class="col-md-9">
+															<input type="text" class="form-control" ng-model="mapstep2.reseq.s2.title">
+														</div>
 													</div>
+													<!-- pop-up dialogue -->
+													<div class="form-group">
+														<label class="control-label col-md-3">
+															Guidance in the 
+															<br>
+															pop-up dialogue
+														</label>
+														<div class="col-md-9">
+															<textarea class="form-control" ng-model="mapstep2.reseq.s2.dlg" placeholder="Detailed description in the pop-up dialog" rows="4"></textarea>
+														</div>
+													</div>	
+													<!-- number of final decision -->
+													<div class="form-group">
+														<h5 class="col-md-12">
+															Choose how many alternatives you want students to choose in the end:
+														</h5>
+														<div class="col-md-12 btn-group">
+															<div class="radio col-md-12">
+																<label><input type="radio" name="t2alt" value="one" ng-model="mapstep2.reseq.s2.alter">Choose only one alternative</label>
+															</div>
+															<div class="radio col-md-12">
+																<label><input type="radio" name="t2alt" value="multiple" ng-model="mapstep2.reseq.s2.alter">Choose multiple dlternatives</label>
+															</div>
+														</div>
+													</div>	
 												</div>
-												<!-- pop-up dialogue -->
-												<div class="form-group">
-													<label class="control-label col-md-3">
-														Guidance in the 
-														<br>
-														pop-up dialogue
-													</label>
-													<div class="col-md-9">
-														<textarea class="form-control" ng-model="mapstep2.reseq.s2.dlg" placeholder="Detailed description in the pop-up dialog" rows="4"></textarea>
-													</div>
-												</div>	
-												<!-- number of final decision -->
-												<div class="form-group">
-													<h5 class="col-md-12">
-														Choose how many alternatives you want students to choose in the end:
-													</h5>
-													<div class="col-md-12 btn-group">
-														<div class="radio col-md-12">
-															<label><input type="radio" name="t2alt" value="one" ng-model="mapstep2.reseq.s2.alter">Choose only one alternative</label>
-														</div>
-														<div class="radio col-md-12">
-															<label><input type="radio" name="t2alt" value="multiple" ng-model="mapstep2.reseq.s2.alter">Choose multiple dlternatives</label>
-														</div>
-													</div>
-												</div>	
-											</form>
+											</div>
+											</div>
+										</div>
+										<div class="col-md-1">
+											not done
 										</div>
 									</div>
-									<div class="panel panel-default">
-										<!-- optional step3 -->
-										<div class="panel-heading">
-											<h4 class="panel-title">
-											    <input type="checkbox" ng-model="mapstep2.reseq.s3.exist">
-											    <a data-toggle="collapse" data-target="#s3t3" ng-class="{disabled: !mapstep2.reseq.s3.exist}">Step3 (T3) (optional)
-											    </a>
-											</h4>
-										</div>
-										<div id="s3t3" class="panel-collapse collapse" ng-show="mapstep2.reseq.s3.exist">
-											<form class="form-horizontal markerArea" role="form">
-												<!-- cuostomized title -->
-												<div class="form-group">
-													<label class="control-label col-md-3">
-														Title
-													</label>
-													<div class="col-md-9">
-														<input type="text" class="form-control" ng-model="mapstep2.reseq.s3.title">
+									<div class="row steps">
+										<div class="col-md-11">
+											<div class="panel panel-default">
+												<!-- optional step3 -->
+												<div class="panel-heading">
+													<h4 class="panel-title">
+													    <input type="checkbox" ng-model="mapstep2.reseq.s3.exist">
+													    <a data-toggle="collapse" data-target="#s3t3" ng-class="{disabled: !mapstep2.reseq.s3.exist}">Step3 (T3) (optional)
+													    </a>
+													</h4>
+												</div>
+												<div id="s3t3" class="panel-collapse collapse" ng-show="mapstep2.reseq.s3.exist">
+													<div class="form-horizontal markerArea" role="form">
+														<!-- cuostomized title -->
+														<div class="form-group">
+															<label class="control-label col-md-3">
+																Title
+															</label>
+															<div class="col-md-9">
+																<input type="text" class="form-control" ng-model="mapstep2.reseq.s3.title">
+															</div>
+														</div>
+														<!-- pop-up dialogue -->
+														<div class="form-group">
+															<label class="control-label col-md-3">
+																Guidance in the 
+																<br>
+																pop-up dialogue
+															</label>
+															<div class="col-md-9">
+																<textarea class="form-control" ng-model="mapstep2.reseq.s3.dlg" placeholder="Detailed description in the pop-up dialog" rows="4"></textarea>
+															</div>
+														</div>					
 													</div>
 												</div>
-												<!-- pop-up dialogue -->
-												<div class="form-group">
-													<label class="control-label col-md-3">
-														Guidance in the 
-														<br>
-														pop-up dialogue
-													</label>
-													<div class="col-md-9">
-														<textarea class="form-control" ng-model="mapstep2.reseq.s3.dlg" placeholder="Detailed description in the pop-up dialog" rows="4"></textarea>
-													</div>
-												</div>					
-											</form>
+											</div>
+										</div>
+										<div class="col-md-1">
+											not done
 										</div>
 									</div>
 								</div> 
 							</div>
 					</div>
 					<div class="row item">
-							<div class="radio col-md-4">
+							<div class="row radio col-md-4">
 								<h4><input type="radio" name="sequence" value="unrestricted" ng-model="mapstep2.seqtype">Seq2: Unestricted sequence</h4>				
-								<div class="caption">
+								<div class="row caption">
 									<ul>
 										<li>T0 (optional): define criteria for evaluating alternatives;</li>
 										<li>T1 & T2: analyze, evaluate alternatives and make decision;</li>
@@ -219,133 +247,154 @@
 							</div>
 							<div class="col-md-8" ng-show="mapstep2.seqtype == 'unrestricted'">
 								<div class="panel-group">
-									<div class="panel panel-default">
-										<!-- optional step0 -->
-										<div class="panel-heading">
-											<h4 class="panel-title">
-											    <input type="checkbox" ng-model="mapstep2.unseq.s0.exist">
-											    <a data-toggle="collapse" data-target="#s0t0un" ng-class="{disabled: !mapstep2.unseq.s0.exist}">Step0 (T0, optional)
-											    </a>
-											</h4>
-										</div>
-										<div id="s0t0un" class="panel-collapse collapse" ng-show="mapstep2.unseq.s0.exist">
-											<form class="form-horizontal markerArea" role="form">
-												<!-- cuostomized title -->
-												<div class="form-group">
-													<label class="control-label col-md-3">
-														Title
-													</label>
-													<div class="col-md-9">
-														<input type="text" class="form-control" ng-model="mapstep2.unseq.s0.title">
-													</div>
+									<div class="row steps">
+										<div class="col-md-11">
+											<div class="panel panel-default">
+												<!-- optional step0 -->
+												<div class="panel-heading">
+													<h4 class="panel-title">
+													    <input type="checkbox" ng-model="mapstep2.unseq.s0.exist">
+													    <a data-toggle="collapse" data-target="#s0t0un" ng-class="{disabled: !mapstep2.unseq.s0.exist}">Step0 (T0, optional)
+													    </a>
+													</h4>
 												</div>
-												<!-- pop-up dialogue -->
-												<div class="form-group">
-													<label class="control-label col-md-3">
-														Guidance in the 
-														<br>
-														pop-up dialogue
-													</label>
-													<div class="col-md-9">
-														<textarea class="form-control" ng-model="mapstep2.unseq.s0.dlg" placeholder="Detailed description in the pop-up dialog" rows="4"></textarea>
-													</div>
-												</div>					
-											</form>
-										</div>
-									</div>
-									<div class="panel panel-default">
-										<!-- step title -->
-										<div class="panel-heading">
-											<h4 class="panel-title">
-												<a data-toggle="collapse" data-target="#s1t1t2">Step1 (T1&T2)</a>
-											</h4>
-										</div>
-										<div id="s1t1t2" class="panel-collapse collapse" >
-											<form class="form-horizontal markerArea" role="form">
-												<!-- customised title -->
-												<div class="form-group">
-													<label class="control-label col-md-3">
-														Title
-													</label>
-													<div class="col-md-9">
-														<input type="text" class="form-control" ng-model="mapstep2.unseq.s1.title">
-													</div>
-												</div>
-												<!-- pop-up dialogue -->
-												<div class="form-group">
-													<label class="control-label col-md-3">
-														Guidance in the 
-														<br>
-														pop-up dialogue
-													</label>
-													<div class="col-md-9">
-														<textarea class="form-control" ng-model="mapstep2.unseq.s1.dlg" placeholder="Detailed description in the pop-up dialog" rows="4"></textarea>
-													</div>
-												</div>
-												<!-- choose evaluation condition -->
-												<div class="form-group">
-													<div class="col-md-12">
-														<div class="caption">
-															<p>(In this sequence, each alternative only needs to be evaluated once.)</p>
+												<div id="s0t0un" class="panel-collapse collapse" ng-show="mapstep2.unseq.s0.exist">
+													<div class="form-horizontal markerArea"role="form">
+														<!-- cuostomized title -->
+														<div class="form-group">
+															<label class="control-label col-md-3">
+																Title
+															</label>
+															<div class="col-md-9">
+																<input type="text" class="form-control" ng-model="mapstep2.unseq.s0.title">
+															</div>
 														</div>
+														<!-- pop-up dialogue -->
+														<div class="form-group">
+															<label class="control-label col-md-3">
+																Guidance in the 
+																<br>
+																pop-up dialogue
+															</label>
+															<div class="col-md-9">
+																<textarea class="form-control" ng-model="mapstep2.unseq.s0.dlg" placeholder="Detailed description in the pop-up dialog" rows="4"></textarea>
+															</div>
+														</div>					
 													</div>
 												</div>
-												<!-- choose evaluation scale -->
-												<div class="form-group">
-													<div class="col-md-6">
-														<h5>Indentify the evaluation scale (number of stars):</h5>
-													</div>
-													<div class="col-md-2">
-														<input type="number" step="any" class="form-control" ng-model="mapstep2.unseq.s1.scale">
-													</div>
-													<div class="col-md-2">
-														<h5>stars</h5>
-													</div>
-												</div>				
-											</form>
+											</div>
+										</div>
+										<div class="col-md-1">
+											not done
 										</div>
 									</div>
-									<div class="panel panel-default">
-										<!-- step title -->
-										<div class="panel-heading">
-											<h4 class="panel-title">
-											    <input type="checkbox" ng-model="mapstep2.unseq.s2.exist">
-											    <a data-toggle="collapse" data-target="#s2t3" ng-class="{disabled: !mapstep2.unseq.s2.exist}">Step3 (T3, optional)
-											    </a>
-											</h4>
-										</div>
-										<div id="s2t3" class="panel-collapse collapse" ng-show="mapstep2.unseq.s2.exist">
-											<form class="form-horizontal markerArea" role="form">
-												<!-- customized title -->
-												<div class="form-group">
-													<label class="control-label col-md-3">
-														Title
-													</label>
-													<div class="col-md-9">
-														<input type="text" class="form-control" ng-model="mapstep2.unseq.s2.title">
+									<div class="row steps">
+										<div class="col-md-11">
+											<div class="panel panel-default">
+												<!-- step title -->
+												<div class="panel-heading">
+													<h4 class="panel-title">
+														<a data-toggle="collapse" data-target="#s1t1t2">Step1 (T1&T2)</a>
+													</h4>
+												</div>
+												<div id="s1t1t2" class="panel-collapse collapse" >
+													<div class="form-horizontal markerArea" role="form">
+														<!-- customised title -->
+														<div class="form-group">
+															<label class="control-label col-md-3">
+																Title
+															</label>
+															<div class="col-md-9">
+																<input type="text" class="form-control" ng-model="mapstep2.unseq.s1.title">
+															</div>
+														</div>
+														<!-- pop-up dialogue -->
+														<div class="form-group">
+															<label class="control-label col-md-3">
+																Guidance in the 
+																<br>
+																pop-up dialogue
+															</label>
+															<div class="col-md-9">
+																<textarea class="form-control" ng-model="mapstep2.unseq.s1.dlg" placeholder="Detailed description in the pop-up dialog" rows="4"></textarea>
+															</div>
+														</div>
+														<!-- choose evaluation condition -->
+														<div class="form-group">
+															<div class="col-md-12">
+																<div class="caption">
+																	<p>(In this sequence, each alternative only needs to be evaluated once.)</p>
+																</div>
+															</div>
+														</div>
+														<!-- choose evaluation scale -->
+														<div class="form-group">
+															<div class="col-md-6">
+																<h5>Indentify the evaluation scale (number of stars):</h5>
+															</div>
+															<div class="col-md-2">
+																<input type="number" step="any" class="form-control" ng-model="mapstep2.unseq.s1.scale">
+															</div>
+															<div class="col-md-2">
+																<h5>stars</h5>
+															</div>
+														</div>				
 													</div>
 												</div>
-												<!-- pop-up dialogue -->
-												<div class="form-group">
-													<label class="control-label col-md-3">
-														Guidance in the 
-														<br>
-														pop-up dialogue
-													</label>
-													<div class="col-md-9">
-														<textarea class="form-control" ng-model="mapstep2.unseq.s2.dlg" placeholder="Detailed description in the pop-up dialog" rows="4"></textarea>
+											</div>
+										</div>
+										<div class="col-md-1">
+											not done
+										</div>
+									</div>
+									<div class="row steps">
+										<div class="col-md-11">
+											<div class="panel panel-default">
+												<!-- step title -->
+												<div class="panel-heading">
+													<h4 class="panel-title">
+													    <input type="checkbox" ng-model="mapstep2.unseq.s2.exist">
+													    <a data-toggle="collapse" data-target="#s2t3" ng-class="{disabled: !mapstep2.unseq.s2.exist}">Step3 (T3, optional)
+													    </a>
+													</h4>
+												</div>
+												<div id="s2t3" class="panel-collapse collapse" ng-show="mapstep2.unseq.s2.exist">
+													<div class="form-horizontal markerArea"role="form">
+														<!-- customized title -->
+														<div class="form-group">
+															<label class="control-label col-md-3">
+																Title
+															</label>
+															<div class="col-md-9">
+																<input type="text" class="form-control" ng-model="mapstep2.unseq.s2.title">
+															</div>
+														</div>
+														<!-- pop-up dialogue -->
+														<div class="form-group">
+															<label class="control-label col-md-3">
+																Guidance in the 
+																<br>
+																pop-up dialogue
+															</label>
+															<div class="col-md-9">
+																<textarea class="form-control" ng-model="mapstep2.unseq.s2.dlg" placeholder="Detailed description in the pop-up dialog" rows="4"></textarea>
+															</div>
+														</div>					
 													</div>
-												</div>					
-											</form>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-1">
+											not done
 										</div>
 									</div>
 								</div> 
 							</div>
 					</div>
-					<a class="btn btn-primary" class="formerStepBtn" ng-click="changeStep()" ui-sref="step1"> <span class="glyphicon glyphicon-chevron-left"></span> Back</a>
-					<a class="btn btn-primary pull-right" class="nextStepBtn" ng-click="changeStep()" ui-sref="step3">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
+					<a type="submit" class="btn btn-primary" class="formerStepBtn" ng-click="changeStep()" ui-sref="step1"> <span class="glyphicon glyphicon-chevron-left"></span> Back</a>
+					<a type="submit" class="btn btn-primary pull-right" class="nextStepBtn" ng-click="changeStep()" ui-sref="">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
 				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 </div>

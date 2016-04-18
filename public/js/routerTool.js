@@ -44,4 +44,8 @@ routerTool.config(function($stateProvider, $urlRouterProvider) {
             url: '/step4',
             templateUrl: 'views/step4.html'
         })
+        .state('test', {
+            url: '/test',
+            templateUrl: 'views/test.html'
+        })
 });

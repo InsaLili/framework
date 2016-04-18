@@ -19,7 +19,11 @@ body{
 h2{
 	text-align: center;
 }
-h4,h5{
+h4{
+	/*float: left;*/
+	margin-top: 0;
+}
+h5{
 	margin-top: 0;
 }
 .form-horizontal .checkbox{
@@ -69,6 +73,9 @@ h4,h5{
 .noteBadge label, .commonSpace label{
 	font-weight: 400;
 }
+.steps{
+	margin-bottom: 5px;
+}
 .stepBtn{
 	margin-bottom: 30px;
 }
@@ -102,10 +109,17 @@ h4,h5{
 	margin-right: 10px;
 }
 .grey{
-    color: #9E9E9E;
+  color: #9E9E9E;
+}
+.green{
+	color: #449d44;
 }
 .addStudent{
 	padding: 0;
 	font-size: 20px;
 	margin-top: 3px;
+}
+.glyphicon-ok-sign{
+	font-size: 20px;
+  margin-top: 5px;
 }
