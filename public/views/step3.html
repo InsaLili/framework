@@ -11,65 +11,54 @@
 		</div>
 		<!-- set the corrdination of the map -->
 		<div class="jumbotron" id="items">
-			<div class="row">
+			<form class="row form-horizontal" role="form" id="step3Form">
 				<div class="col-md-offset-1 col-md-10">
 					<div class="row item">
 						<div class="col-md-4">
 							<h4>Indicators for students:</h4>
 						</div>
 						<div class="col-md-8">
-							<form class="form-horizontal" role="form">
-								<div class="form-group checkbox" ng-if="probar == 'individual'">
-									<div class="col-md-12">
-										<h5><input type="checkbox" ng-model="mapstep3.indiStu.indiviPro">Add individual evaluating progress</h5>
+							<div class="form-group checkbox" ng-if="probar == 'individual'">
+								<label class="control-label bold"><input type="checkbox" ng-model="mapstep3.indiStu.indiviPro">Add individual evaluating progress</label>
+							</div>
+							<div class="form-group checkbox" ng-if="probar == 'group'">
+								<label class="control-label bold"><input type="checkbox" ng-model="mapstep3.indiStu.groupPro">Add group evaluating progress</label>
+							</div>
+							<div class="form-group checkbox marginBottom">
+								<label class="control-label bold"><input type="checkbox" ng-model="commentbadge">Add individual "comment badge"</label>
+								<div ng-show="commentbadge">
+									<div class="pull-left">
+										<label class="control-label">Student can earn a "comment badge" by submitting more than</label>
+									</div>
+									<div class="col-md-2">
+										<input type="number" name="comment" step="any" class="form-control" ng-model="mapstep3.indiStu.badge.comment" required>
+									</div>
+									<div class="pull-left">
+										<label class="control-label">comments</label>
 									</div>
 								</div>
-								<div class="form-group checkbox" ng-if="probar == 'group'">
-									<div class="col-md-12">
-										<h5><input type="checkbox" ng-model="mapstep3.indiStu.groupPro">Add group evaluating progress</h5>
-									</div>
+							</div>
+							<div class="form-group checkbox">
+								<div class="row col-md-4">
+									<label class="control-label bold"><input type="checkbox" ng-model="mapstep3.indiStu.badge.timer">Add group "timer badge"</label>
 								</div>
-								<div class="form-group checkbox marginBottom">
-									<div class="col-md-12">
-										<h5><input type="checkbox" ng-model="commentbadge">Add individual "comment badge"</h5>
-									</div>
-									<div ng-show="commentbadge">
-										<div class="col-md-offset-1 col-md-5">
-											<label>Student can earn a "comment badge" by submitting more than</label>
-										</div>
-										<div class="col-md-2">
-											<input type="number" step="any" class="form-control" ng-model="mapstep3.indiStu.badge.comment">
-										</div>
-										<div class="col-md-2">
-											<label class="label-control">comment</label>
-										</div>
-									</div>
-								</div>
-								<div class="form-group checkbox">
-									<div class="col-md-4">
-										<h5><input type="checkbox" ng-model="mapstep3.indiStu.badge.timer">Add group "timer badge"</h5>
-									</div>
-									<div class="col-md-8" ng-show="mapstep3.indiStu.badge.timer==true">
-										<div ng-repeat ="i in mapstep3.step track by $index">
-											<div class="form-group" ng-show="i">
-												<div class="checkboxMargin">
+								<div class="col-md-8" ng-show="mapstep3.indiStu.badge.timer==true">
+									<div ng-repeat ="i in mapstep3.step track by $index">
+										<div class="form-group" ng-show="i">
+											<div class="checkboxMargin">
+												<div class="pull-left">
+													<label class="control-label"><input type="checkbox" ng-model="mapstep3.indiStu.timers[$index]">Step{{$index}}</label>
+												</div>
+												<div ng-show="mapstep3.indiStu.timers[$index]">
 													<div class="col-md-3">
-														<h5 class="label-control"><input type="checkbox" ng-model="mapstep3.indiStu.timers[$index]">Step{{$index}}</h5>
-													</div>
-													<div ng-show="mapstep3.indiStu.timers[$index]">
-														<div class="col-md-3">
-															<input type="text" placeholder="00:00" class="form-control" ng-model="mapstep3.indiStu.timerValue[$index]">
-														</div>
-														<div class="col-md-2">
-															<h5>mins</h5>
-														</div>
+														<input type="text" name="time{{$index}}" placeholder="mm:ss" class="form-control timers" ng-model="mapstep3.indiStu.timerValue[$index]">
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</form>
+							</div>
 						</div>
 					</div>
 					<div class="row item">
@@ -77,30 +66,21 @@
 							<h4>Indicators for teachers:</h4>
 						</div>
 						<div class="col-md-8">
-							<form class="form-horizontal" role="form">
-								<div class="form-group checkbox marginBottom">
-									<div class="col-md-12">
-										<h5><input type="checkbox" ng-model="mapstep3.indiTea.browsed">Add number of the browsed alternatives of each student</h5>
-									</div>
-								</div>
-								<div class="form-group checkbox">
-									<div class="col-md-12">
-										<h5><input type="checkbox" ng-model="mapstep3.indiTea.progre">Add evaluating progress</h5>
-									</div>
-								</div>
-								<div class="form-group checkbox">
-									<div class="col-md-12">
-										<h5><input type="checkbox" ng-model="mapstep3.indiTea.comment">Add groups' comments</h5>
-									</div>
-								</div>
-							</form>
+							<div class="form-group checkbox marginBottom">
+								<label class="control-label bold"><input type="checkbox" ng-model="mapstep3.indiTea.browsed">Add number of the browsed alternatives of each student</label>
+							</div>
+							<div class="form-group checkbox">
+								<label class="control-label bold"><input type="checkbox" ng-model="mapstep3.indiTea.progre">Add evaluating progress</label>
+							</div>
+							<div class="form-group checkbox">
+								<label class="control-label bold"><input type="checkbox" ng-model="mapstep3.indiTea.comment">Add groups' comments</label>
+							</div>
 						</div>
-							
 					</div>
-				<a class="btn btn-primary" class="formerStepBtn" ng-click="changeStep()" href="#/step2"> <span class="glyphicon glyphicon-chevron-left"></span> Back</a>
-				<a class="btn btn-primary pull-right" class="nextStepBtn" ng-click="changeStep()" href="#/step4">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
+				<a class="btn btn-primary" class="formerStepBtn" ng-click="changeStep($event)" href="#/step2"> <span class="glyphicon glyphicon-chevron-left"></span> Back</a>
+				<a class="btn btn-primary pull-right" class="nextStepBtn" ng-click="changeStep($event)" href="#/step4">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
 				</div>
-			</div>
+			</form>
 		</div>
 	</div>
 </div>

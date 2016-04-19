@@ -5,13 +5,13 @@
         <div class="form-group">
             <label class="col-md-3 control-label" for="lng">Longtitude</label>
             <div class="col-md-6">
-                <input type="number" name="lng" step="any" class="form-control" placeholder="ex: 12.3456" required>
+                <input type="text" name="timer" placeholder="mm:ss" class="form-control timers">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label" for="name">Name</label>
             <!-- <div class="controls"> -->
-                <input class="form-control" type="text" name="name" id="name" placeholder="Your name" required>
+                <input class="form-control timers" type="text" name="name"  id="name" placeholder="Your name">
             <!-- </div> -->
         </div>
         <div class="form-group">
@@ -32,12 +32,7 @@
                 </select>
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label" for="message">Message</label>
-            <div class="controls">
-                <textarea name="message" id="message" rows="8" class="span5" placeholder="The message you want to send to us." required></textarea>
-            </div>
-        </div>
+
         <div class="form-actions">
             <input type="hidden" name="save" value="contact">
             <a ng-click="changeStep($event)" class="btn btn-success" href="#/">Submit Message</a>

@@ -402,7 +402,7 @@ mapSetModule.controller('CtrlStep2', [ "$scope", "DataService",function($scope, 
 	}
 }]);
 
-mapSetModule.controller('CtrlStep3', [ "$scope", "DataService",function($scope, DataService) {
+mapSetModule.controller('CtrlStep3', [ "$scope", "DataService", "$timeout",function($scope, DataService, $timeout) {
 	var _index = DataService._index;
 	$scope.mapstep3 = DataService.apps[_index].mapstep3;
 
@@ -424,18 +424,51 @@ mapSetModule.controller('CtrlStep3', [ "$scope", "DataService",function($scope, 
 		($scope.steps.s2.exist)?($scope.mapstep3.step[2] = true):($scope.mapstep3.step[2] = false);
 		$scope.mapstep3.step[3] = false;
 	}
+	// format for the timer
+	$.validator.addMethod("timeMS", function(value, element) { 
+	    if (!/^\d{2}:\d{2}$/.test(value)) return false;
+	    var parts = value.split(':');
+	    if (parts[0] > 59 || parts[1] > 59 ) return false;
+	    return true;
+	}, "Invalid time format.");
+	// init validator
+  $('#step3Form').validate({
+    highlight: function (element, $event) {
+        $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+    },
+    success: function (element) {
+        element.addClass('valid')
+            .closest('.form-group').removeClass('has-error').addClass('has-success');
+    }
+  });
 
 	$scope.range = function(n) {
 		return new Array(n);   
 	}
-	$scope.changeStep = function(){
+	$scope.changeStep = function($event){
+		
+		if($('#step3Form').valid() == false){
+    	$event.preventDefault();
+    	return;
+  	}
+
 		for(var i=0;i<$scope.mapstep3.step.length;i++){
 			$scope.mapstep3.indiStu.timers[i] = $scope.mapstep3.step[i] && $scope.mapstep3.indiStu.timers[i];
 		}
+
 		($scope.commentbadge)?$scope.mapstep3.indiStu.badge.comment:($scope.mapstep3.indiStu.badge.comment = undefined);
 
 		DataService.apps[_index].mapstep3 = $scope.mapstep3;
 	}
+	$timeout(function () {
+		  // append timers to validator
+	  $('.timers').each(function () {
+	      $(this).rules("add", {
+	          required: true,
+	          timeMS: true
+	      });
+	  });
+	});
 }]);
 
 mapSetModule.controller('CtrlStep4', [ "$scope", "DataService",function($scope, DataService) {
@@ -474,22 +507,35 @@ mapSetModule.controller('CtrlStep4', [ "$scope", "DataService",function($scope, 
 mapSetModule.controller('CtrlTest', function($scope){
 	$(document).ready(function () {
 
-    $('#contact-form').validate({
-        highlight: function (element, $event) {
-            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-        },
-        success: function (element) {
-            element.addClass('valid')
-                .closest('.form-group').removeClass('has-error').addClass('has-success');
-        }
-    });
+		$.validator.addMethod("timeMS", function(value, element) { 
+		    if (!/^\d{2}:\d{2}$/.test(value)) return false;
+		    var parts = value.split(':');
+		    if (parts[0] > 59 || parts[1] > 59 ) return false;
+		    return true;
+		}, "Invalid time format.");
+	  $('#contact-form').validate({
+	      highlight: function (element, $event) {
+	          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+	      },
+	      success: function (element) {
+	          element.addClass('valid')
+	              .closest('.form-group').removeClass('has-error').addClass('has-success');
+	      }
+	  });
 
-    $scope.changeStep = function($event){
-    	if($('#contact-form').valid() == false){
+	  $('.timers').each(function () {
+	      $(this).rules("add", {
+	          required: true,
+	          timeMS: true
+	      });
+	  });
+
+	  $scope.changeStep = function($event){
+	  	if($('#contact-form').valid() == false){
 	    	$event.preventDefault();
 	    	return;
-    	}
-    }
+	  	}
+	  }
 
-});
+	});
 });
