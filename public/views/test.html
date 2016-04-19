@@ -1,18 +1,47 @@
-<form data-toggle="validator" role="form">
-  <div class="form-group">
-    <label for="inputName" class="control-label">Name</label>
-    <input type="text" class="form-control" id="inputName" placeholder="Cina Saffary" required>
-  </div>
-  <div class="form-group has-feedback">
-    <label for="inputTwitter" class="control-label">Twitter</label>
-    <div class="input-group">
-      <span class="input-group-addon">@</span>
-      <input type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" class="form-control" id="inputTwitter" placeholder="1000hz" required>
-    </div>
-    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-    <div class="help-block with-errors">Hey look, this one has feedback icons!</div>
-  </div>
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
-</form>
+<div class="hero-unit">
+     <h1>Contact Form</h1> 
+    </br>
+    <form class="form-horizontal" id="contact-form">
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="lng">Longtitude</label>
+            <div class="col-md-6">
+                <input type="number" name="lng" step="any" class="form-control" placeholder="ex: 12.3456" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="name">Name</label>
+            <!-- <div class="controls"> -->
+                <input class="form-control" type="text" name="name" id="name" placeholder="Your name" required>
+            <!-- </div> -->
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="email">Email Address</label>
+            <div class="controls">
+                <input type="text" name="email" id="email" placeholder="Your email address" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="subject">Subject</label>
+            <div class="controls">
+                <select id="subject" name="subject">
+                    <option value="na" selected="">Choose One:</option>
+                    <option value="service">Feedback</option>
+                    <option value="suggestions">Suggestion</option>
+                    <option value="support">Question</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="message">Message</label>
+            <div class="controls">
+                <textarea name="message" id="message" rows="8" class="span5" placeholder="The message you want to send to us." required></textarea>
+            </div>
+        </div>
+        <div class="form-actions">
+            <input type="hidden" name="save" value="contact">
+            <a ng-click="changeStep($event)" class="btn btn-success" href="#/">Submit Message</a>
+            <button type="reset" class="btn">Cancel</button>
+        </div>
+    </form>
+</div>

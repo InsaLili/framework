@@ -12,7 +12,7 @@
         <div class="col-md-12">
           <div class="docList" ng-repeat="app in apps track by $index">
             <button class="btn btn-primary chooseApp" ng-click="chooseApp($event,app._id)">{{app._id}}</button>
-            <a class="btn btn-default" ng-click="editApp($index)" ui-sref="step1"><span class="glyphicon glyphicon-edit"></span></a>
+            <a class="btn btn-default" ng-click="editApp($index)" href="#/step1"><span class="glyphicon glyphicon-edit"></span></a>
             <a class="btn btn-default" ng-click="deleteApp(app,$index)"><span class="glyphicon glyphicon-trash"></span></a>
           </div>
         </div>
@@ -49,7 +49,7 @@
                   <div class="form-group">
                     <label class="col-md-12"><input type="radio" name="template" value="false" ng-model="template"> Create a new one (choose your application style)</label>
                     <div class="col-md-12" ng-show="template == 'false'">
-                      <a class="btn btn-primary docList" ng-click="createDoc()" ui-sref="step1">Map</a>
+                      <a class="btn btn-primary docList" ng-click="createDoc()" href="step1">Map</a>
                       <a class="btn btn-primary docList">Figure</a>
                       <a class="btn btn-primary docList">Text</a>
                     </div>

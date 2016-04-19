@@ -7,35 +7,33 @@
 		</div>
 		<!-- set the corrdination of the map -->
 		<div class="jumbotron" id="items">
-			<div class="row">
+			<form class="row form-horizontal" id="step1Form" role="form" name="step1Form">
 				<div class="col-md-7">
 					<!-- set the map -->
 					<div class="row item">
-						<form class="form-horizontal" role="form" name="form">
-							<div class="col-md-4">
-								<h4>Set map coordinate:</h4>				
-							</div>
-							<div class="col-md-8">
-								<div class="form-group">
-									<label class="col-md-3 control-label">Longtitude</label>
-									<div class="col-md-6">
-										<input type="number" step="any" class="form-control" placeholder="ex: 12.3456" ng-model="mapstep1.map.lng">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-md-3 control-label">Laititude</label>
-									<div class="col-md-6">
-										<input type="number" step="any" class="form-control" placeholder="ex: 12.3456" ng-model="mapstep1.map.lat">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-md-3 control-label">Zoom</label>
-									<div class="col-md-6">
-										<input type="number" step="any" class="form-control" ng-model="mapstep1.map.zoom">
-									</div>
+						<div class="col-md-4">
+							<h4>Set map coordinate:</h4>				
+						</div>
+						<div class="col-md-8">
+							<div class="form-group">
+								<label class="col-md-3 control-label" for="lng">Longtitude</label>
+								<div class="col-md-6">
+									<input type="number" name="lng" step="any" class="form-control" placeholder="ex: 12.3456" ng-model="mapstep1.map.lng" required>
 								</div>
 							</div>
-						</form>
+							<div class="form-group">
+								<label class="col-md-3 control-label" for="lat">Laititude</label>
+								<div class="col-md-6">
+									<input type="number" name="lat" step="any" class="form-control" placeholder="ex: 12.3456" ng-model="mapstep1.map.lat" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 control-label">Zoom</label>
+								<div class="col-md-6">
+									<input type="number" step="any" class="form-control" ng-model="mapstep1.map.zoom">
+								</div>
+							</div>
+						</div>
 					</div>
 					<!-- add markers -->
 					<div class="row item">
@@ -55,7 +53,7 @@
 										</h4>
 									</div>
 									<div id="marker-{{$index}}" class="panel-collapse collapse" >
-										<form class="form-horizontal markerArea" role="form" name="form">
+										<div class="markerArea">
 											<div class="form-group">
 												<label class="control-label col-md-3">
 													Name
@@ -104,13 +102,13 @@
 													<textarea class="form-control" ng-model="marker.data" rows="4"></textarea>
 												</div>
 											</div>
-										</form>
+										</div>
 									</div>
 								</div>
 							</div> 
 							<button class="btn btn-primary" data-toggle="collapse" data-target="#newmarker">New marker</button>
 							<div id="newmarker" class="panel-collapse collapse" >
-								<form class="form-horizontal markerArea" role="form" name="form">
+								<div class="markerArea">
 									<div class="form-group">
 										<label class="control-label col-md-3">
 											Name
@@ -164,7 +162,7 @@
 											<button class="btn btn-default pull-right" ng-click="addMarker()"><span class="glyphicon glyphicon-plus"></span>  Add</button>
 										</div>
 									</div>
-								</form>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -192,7 +190,7 @@
 										</h4>
 									</div>
 									<div id="cri-{{$index}}" class="panel-collapse collapse">
-										<form class="form-horizontal infoArea" role="form" name="form">
+										<div class="infoArea">
 											<div class="form-group">
 												<label class="control-label col-md-3">
 													Name
@@ -201,13 +199,13 @@
 													<input type="text" class="form-control" ng-model="cri.name">
 												</div>
 											</div>
-										</form>
+										</div>
 									</div>
 								</div>
 							</div>
 							<button class="btn btn-primary"  data-toggle="collapse" data-target="#newCri">New criteria</button>
 							<div id="newCri" class="panel-collapse collapse" >
-								<form class="form-horizontal markerArea" role="form" name="form">
+								<div class="markerArea">
 									<div class="form-group">
 										<label class="control-label col-md-3">
 											Name
@@ -221,7 +219,7 @@
 											<button class="btn btn-default pull-right" ng-click="addCri()"><span class="glyphicon glyphicon-plus"></span>  Add</button>
 										</div>
 									</div>
-								</form>
+								</div>
 							</div>
 							
 						</div>
@@ -244,7 +242,7 @@
 										</h4>
 									</div>
 									<div id="info-{{$index}}" class="panel-collapse collapse">
-										<form class="form-horizontal infoArea" role="form" name="form">
+										<div class="infoArea">
 											<div class="form-group">
 												<label class="control-label col-md-3">
 													Name
@@ -269,13 +267,13 @@
 													<textarea class="form-control" ng-model="info.data" rows="4"></textarea>
 												</div>
 											</div>
-										</form>
+										</div>
 									</div>
 								</div>
 							</div>
 							<button class="btn btn-primary" data-toggle="collapse" data-target="#newInfo">New information</button>
 							<div id="newInfo" class="panel-collapse collapse" >
-								<form class="form-horizontal markerArea" role="form" name="form">
+								<div class="markerArea">
 									<div class="form-group">
 										<label class="control-label col-md-3">
 											Name
@@ -305,11 +303,11 @@
 											<button class="btn btn-default pull-right" ng-click="addInfo()"><span class="glyphicon glyphicon-plus"></span>  Add</button>
 										</div>
 									</div>
-								</form>
+								</div>
 							</div>
 						</div>
 					</div>
-					<a class="btn btn-primary pull-right" class="nextStepBtn" ng-click="toStep2()" ui-sref="step2">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
+					<a class="btn btn-primary pull-right" class="nextStepBtn" ng-click="changeStep($event)" href="#/step2">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
 				</div>
 				<div class="col-md-5">
 					<h4>Preview of the map</h4>
@@ -321,7 +319,7 @@
 						You can adjust the map in preview, e.g. dragging the map to change the center coordinate, changing the zoom level, and dragging the markers to change their position
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	</div>
 </div>

@@ -273,6 +273,16 @@ mapSetModule.controller('CtrlStep1', [ "$scope", "DataService",function($scope, 
 			}
 		}
 	});
+
+	$('#step1Form').validate({
+    highlight: function (element, $event) {
+      $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+    },
+    success: function (element) {
+      element.addClass('valid')
+        .closest('.form-group').removeClass('has-error').addClass('has-success');
+    }
+	});
 	// preload the format of a new marker
 	creatMarker = function(){
 		$scope.newMarker={};
@@ -347,7 +357,11 @@ mapSetModule.controller('CtrlStep1', [ "$scope", "DataService",function($scope, 
 		reader.readAsDataURL(file);
 	}
 
-	$scope.toStep2 = function(){
+	$scope.changeStep = function($event){
+		if($('#step1Form').valid() == false){
+    	$event.preventDefault();
+    	return;
+  	}
 		DataService.apps[_index].mapstep1 = $scope.mapstep1;
 	}
 
@@ -357,8 +371,33 @@ mapSetModule.controller('CtrlStep1', [ "$scope", "DataService",function($scope, 
 mapSetModule.controller('CtrlStep2', [ "$scope", "DataService",function($scope, DataService) {
 	var _index = DataService._index;
 	$scope.mapstep2 = DataService.apps[_index].mapstep2;
-
-	$scope.changeStep = function(){
+	$('#reseqForm').validate({
+      highlight: function (element, $event) {
+          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+      },
+      success: function (element) {
+          element.addClass('valid')
+              .closest('.form-group').removeClass('has-error').addClass('has-success');
+      }
+  });
+  $('#unseqForm').validate({
+      highlight: function (element, $event) {
+          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+      },
+      success: function (element) {
+          element.addClass('valid')
+              .closest('.form-group').removeClass('has-error').addClass('has-success');
+      }
+  });
+	$scope.changeStep = function($event){
+		if($scope.mapstep2.seqtype=="restricted" && $('#reseqForm').valid()==false){
+			$event.preventDefault();
+	    return;
+		}
+		if($scope.mapstep2.seqtype=="unrestricted" && $('#unseqForm').valid() == false){
+    	$event.preventDefault();
+    	return;
+		}
 		DataService.apps[_index].mapstep2 = $scope.mapstep2;
 	}
 }]);
@@ -432,3 +471,25 @@ mapSetModule.controller('CtrlStep4', [ "$scope", "DataService",function($scope, 
 	}
 }]);
 
+mapSetModule.controller('CtrlTest', function($scope){
+	$(document).ready(function () {
+
+    $('#contact-form').validate({
+        highlight: function (element, $event) {
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        success: function (element) {
+            element.addClass('valid')
+                .closest('.form-group').removeClass('has-error').addClass('has-success');
+        }
+    });
+
+    $scope.changeStep = function($event){
+    	if($('#contact-form').valid() == false){
+	    	$event.preventDefault();
+	    	return;
+    	}
+    }
+
+});
+});

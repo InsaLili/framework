@@ -123,3 +123,6 @@ h5{
 	font-size: 20px;
   margin-top: 5px;
 }
+label.error{
+	display: none !important;
+}
