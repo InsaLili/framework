@@ -1,7 +1,7 @@
 <div class="container" ng-controller="CtrlStep3">
 	<div class="col-md-12">
 		<div class="showStep">
-			<h3>Step3/4: add indicators to the activity</h3>
+			<h3>Step3/3: add indicators to the activity</h3>
 			<button class="btn btn-default" data-toggle="collapse" data-target="#instruction">? Instruction</button>
 			<div id="instruction" class="panel-collapse collapse">
 				<p>Instruction: in this step, you can add indicators to the application. The indicators would be provided for students and teachers.</p>
@@ -79,8 +79,106 @@
 							</div>
 						</div>
 					</div>
-				<a class="btn btn-primary" class="formerStepBtn" ng-click="changeStep($event)" href="#/step2"> <span class="glyphicon glyphicon-chevron-left"></span> Back</a>
-				<a class="btn btn-primary pull-right" class="nextStepBtn" ng-click="changeStep($event)" href="#/step4">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
+					<a class="btn btn-primary" class="formerStepBtn" ng-click="changeStep($event)" href="#/step2"> <span class="glyphicon glyphicon-chevron-left"></span> Back</a>
+					<a class="btn btn-primary pull-right" class="nextStepBtn" ng-click="submit($event)" href="#/">Save <span class="glyphicon glyphicon-floppy-disk"></span></a>
+					<button class="btn btn-default pull-right" class="nextStepBtn" data-toggle="modal" data-target="#advanceOpt" id="advBtn">Advanced</button>
+					<!-- advanced option: define device role -->
+					<div class="modal fade" role="dialog" id="advanceOpt">
+            <div class="modal-dialog markerArea">
+              <div class="modal-header">
+                <h4 class="modal-title">Define roles of devices</h4>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                	<div class="col-md-12 caption">
+                		<p>Instruction: the default configuration of device is using a large display as the shared display and tablet as personal device. You can change this configuration based on this real situation.</p>
+                	</div>
+                  <label class="bold col-md-12">
+                    Choose what kind of configuration you want to apply in the class
+                  </label>
+                  <div class="col-md-12">
+										<div class="col-md-12">
+											<div class="radio deviceCompo">
+												<label class="bold"><input type="radio" name="devicecompo" value="shared" ng-model="mapstep4.device" required>Only shared display</label>
+											</div>
+											<div class="col-md-12 chooseDevice" ng-show="mapstep4.device == 'shared'">
+												<div class="col-md-5 marginTop7">
+													Choose the device type
+												</div>
+												<div class="col-md-7">
+													<div class="radio deviceType">
+														<label><input type="radio" name="sharetype" value="display" ng-model="mapstep4.share" required>Large display</label>
+													</div>
+													<div class="radio deviceType">
+														<label><input type="radio" name="sharetype" value="tablet" ng-model="mapstep4.share" required>Tablet</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="radio deviceCompo">
+												<label class="bold"><input type="radio" name="devicecompo" value="person" ng-model="mapstep4.device" required>Only personal device</label>
+											</div>
+											<div class="col-md-12 chooseDevice" ng-show="mapstep4.device == 'person'">
+												<div class="col-md-5 marginTop7">
+													Choose the device type
+												</div>
+												<div class="col-md-7">
+													<div class="radio deviceType">
+														<label><input type="radio" name="persontype" value="tablet" ng-model="mapstep4.person" required>Tablet</label>
+													</div>
+													<div class="radio deviceType">
+														<label><input type="radio" name="persontype" value="phone" ng-model="mapstep4.person" required>Smartphone</label>
+													</div>
+												</div>
+											</div>
+										</div>							
+										<div class="col-md-12">
+											<div class="radio deviceCompo">
+												<label class="bold"><input type="radio" name="devicecompo" value="both" ng-model="mapstep4.device" required>Both shared display and personal device</label>
+											</div>
+											<div class="col-md-12 chooseDevice" ng-show="mapstep4.device == 'both'">
+												<div class="col-md-12 marginTop7">
+													Choose the device type
+												</div>
+												<div class="col-md-12">
+													<div class="row chooseDevice">
+														<div class="col-md-4 marginTop7">
+															Shared display
+														</div>
+														<div class="col-md-7">
+															<div class="radio deviceType">
+																<label><input type="radio" name="bothsharetype" value="display" ng-model="mapstep4.shared" required>Large display</label>
+															</div>
+															<div class="radio deviceType">
+																<label><input type="radio" name="bothsharetype" value="tablet" ng-model="mapstep4.shared" required>Tablet</label>
+															</div>
+														</div>
+													</div>
+													<div class="row chooseDevice">
+														<div class="col-md-4 marginTop7">
+															Personal device
+														</div>
+														<div class="col-md-7">
+															<div class="radio deviceType">
+																<label><input type="radio" name="bothpersontype" value="tablet" ng-model="mapstep4.person" required>Tablet</label>
+															</div>
+															<div class="radio deviceType">
+																<label><input type="radio" name="bothpersontype" value="phone" ng-model="mapstep4.person" required>Smartphone</label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk"></span>  Save</button>
+              </div>
+            </div>
+          </div>
 				</div>
 			</form>
 		</div>

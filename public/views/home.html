@@ -43,13 +43,13 @@
                   <div class="form-group">
                     <label class="col-md-12"><input type="radio" name="template" value="true" ng-model="template"> Create an activity based on existing one</label>
                     <div class="col-md-12" ng-show="template == 'true'">
-                      <a class="btn btn-primary docList" ng-repeat="app in apps track by $index" ng-click="replicateApp($index)" ui-sref="step1">{{app._id}}</a>
+                      <a class="btn btn-primary docList" ng-repeat="app in apps track by $index" ng-click="replicateApp($index)" href="#/step1">{{app._id}}</a>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-12"><input type="radio" name="template" value="false" ng-model="template"> Create a new one (choose your application style)</label>
                     <div class="col-md-12" ng-show="template == 'false'">
-                      <a class="btn btn-primary docList" ng-click="createDoc()" href="step1">Map</a>
+                      <a class="btn btn-primary docList" ng-click="createDoc()" href="#/step1">Map</a>
                       <a class="btn btn-primary docList">Figure</a>
                       <a class="btn btn-primary docList">Text</a>
                     </div>

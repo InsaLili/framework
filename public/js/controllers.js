@@ -142,9 +142,9 @@ mapSetModule.controller('ToolCtrl', [ "$scope", "DataService", function($scope, 
 				"step": []
 			},
 			mapstep4:{
-				"device":null,
-				"shared":null,
-				"person":null
+				"device":"both",
+				"shared":"display",
+				"person":"tablet"
 				// "person":{
 				// 	"type": null,
 				// 	"browse": null,
@@ -408,6 +408,7 @@ mapSetModule.controller('CtrlStep2', [ "$scope", "DataService",function($scope, 
 mapSetModule.controller('CtrlStep3', [ "$scope", "DataService", "$timeout",function($scope, DataService, $timeout) {
 	var _index = DataService._index;
 	$scope.mapstep3 = DataService.apps[_index].mapstep3;
+	$scope.mapstep4 = DataService.apps[_index].mapstep4;
 
 	// set the comment badge check marker
 	($scope.mapstep3.indiStu.badge.comment)?($scope.commentbadge = true):($scope.commentbadge = false);
@@ -452,9 +453,10 @@ mapSetModule.controller('CtrlStep3', [ "$scope", "DataService", "$timeout",funct
 		
 		if($('#step3Form').valid() == false){
     	$event.preventDefault();
-    	return;
+    	return false;
   	}
 
+  	// store timers state
 		for(var i=0;i<$scope.mapstep3.step.length;i++){
 			$scope.mapstep3.indiStu.timers[i] = $scope.mapstep3.step[i] && $scope.mapstep3.indiStu.timers[i];
 		}
@@ -462,30 +464,14 @@ mapSetModule.controller('CtrlStep3', [ "$scope", "DataService", "$timeout",funct
 		($scope.commentbadge)?$scope.mapstep3.indiStu.badge.comment:($scope.mapstep3.indiStu.badge.comment = undefined);
 
 		DataService.apps[_index].mapstep3 = $scope.mapstep3;
-	}
-	$timeout(function () {
-		  // append timers to validator
-	  $('.timers').each(function () {
-	      $(this).rules("add", {
-	          required: true,
-	          timeMS: true
-	      });
-	  });
-	});
-}]);
-
-mapSetModule.controller('CtrlStep4', [ "$scope", "DataService",function($scope, DataService) {
-	var _index = DataService._index;
-	$scope.mapstep4 = DataService.apps[_index].mapstep4;
-	$scope.seqtype = DataService.apps[_index].mapstep2.seqtype;
-	($scope.seqtype == "restricted")?($scope.evaltype = DataService.apps[_index].mapstep2.reseq.s1.eval):($scope.evaltype = undefined);
-
-	$scope.changeStep = function(){
 		DataService.apps[_index].mapstep4 = $scope.mapstep4;
+
+		return true;
 	}
 
-	$scope.submit = function(){
-		$scope.changeStep();
+	$scope.submit = function($event){
+
+  	if($scope.changeStep($event) == false) return;
 
 		var db = new PouchDB('https://myoa.smileupps.com/myoa');
 		var id = DataService.apps[_index]._id;
@@ -505,40 +491,19 @@ mapSetModule.controller('CtrlStep4', [ "$scope", "DataService",function($scope, 
 		});
 		// }
 	}
-}]);
-
-mapSetModule.controller('CtrlTest', function($scope){
-	$(document).ready(function () {
-
-		$.validator.addMethod("timeMS", function(value, element) { 
-		    if (!/^\d{2}:\d{2}$/.test(value)) return false;
-		    var parts = value.split(':');
-		    if (parts[0] > 59 || parts[1] > 59 ) return false;
-		    return true;
-		}, "Invalid time format.");
-	  $('#contact-form').validate({
-	      highlight: function (element, $event) {
-	          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-	      },
-	      success: function (element) {
-	          element.addClass('valid')
-	              .closest('.form-group').removeClass('has-error').addClass('has-success');
-	      }
-	  });
-
+	$timeout(function () {
+		  // append timers to validator
 	  $('.timers').each(function () {
 	      $(this).rules("add", {
 	          required: true,
-	          timeMS: true
+	          timeMS: true 
 	      });
 	  });
+	});
+}]);
 
-	  $scope.changeStep = function($event){
-	  	if($('#contact-form').valid() == false){
-	    	$event.preventDefault();
-	    	return;
-	  	}
-	  }
+mapSetModule.controller('CtrlTeacher', function($scope){
+	$(document).ready(function () {
 
 	});
 });

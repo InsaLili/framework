@@ -132,3 +132,13 @@ label.error{
 .bold{
 	font-weight: bold !important;
 }
+#advBtn{
+	margin-right: 20px;
+}
+.chooseDevice{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.marginTop7{
+	margin-top: 7px;
+}

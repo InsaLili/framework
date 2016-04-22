@@ -23,9 +23,9 @@ routerTool.config(['$routeProvider',
             templateUrl:"views/step4.html",
             controller:"CtrlStep4"
         }).
-        when('/test',{
-            templateUrl:"views/test.html",
-            controller:"CtrlTest"
+        when('/teacher',{
+            templateUrl:"views/teacher.html",
+            controller:"CtrlTeacher"
         }).
         otherwise({
             redirectTo: '/'
