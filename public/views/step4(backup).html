@@ -1,0 +1,183 @@
+<div class="container" ng-controller="CtrlStep4">
+	<div class="col-md-12">
+		<div class="showStep">
+			<h3>Step4/4: define roles of devices</h3>
+			<button class="btn btn-default" data-toggle="collapse" data-target="#instruction">? Instruction</button>
+			<div id="instruction" class="panel-collapse collapse">
+				<p>In this step, you can choose to add functionalities to each task and assign devices to demonstrate these functionalities.</p>
+			</div>
+		</div>
+		<!-- set the corrdination of the map -->
+		<div class="jumbotron" id="items">
+			<div class="row UIRole">
+				<div class="col-md-offset-1 col-md-10">
+					<div class="row item">
+						<div class="col-md-offset-5 col-md-4">
+							<h4>Shared display</h4>
+						</div>
+						<div class="col-md-3">
+							<h4>Personal device</h4>
+						</div>
+					</div>
+					<div class="row item">
+						<div class="col-md-4">
+							<label>Display type</label>
+						</div>
+						<div class="col-md-4">
+							<div class="row">
+								<div class="radio deviceType">
+									<label><input type="radio" name="sharetype" value="display" ng-model="mapstep4.share.type">Large display</label>
+								</div>
+								<div class="radio deviceType">
+									<label><input type="radio" name="sharetype" value="tablet" ng-model="mapstep4.share.type">Tablet</label>
+								</div>
+								<div class="radio deviceType">
+									<label><input type="radio" name="sharetype" value="none" ng-model="mapstep4.share.type">Not use</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="row">
+								<div class="radio deviceType">
+									<label><input type="radio" name="persontype" value="tablet" ng-model="mapstep4.person.type">Tablet</label>
+								</div>
+								<div class="radio deviceType">
+									<label><input type="radio" name="persontype" value="phone" ng-model="mapstep4.person.type">Smartphone</label>
+								</div>
+								<div class="radio deviceType">
+									<label><input type="radio" name="persontype" value="none" ng-model="mapstep4.person.type">Not use</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row item">
+						<div class="col-md-5">
+							<label>Showing information of each alternative</label>
+						</div>
+						<div class="col-md-7">
+							<div class="row">
+								<div class="col-md-offset-1 col-md-1">
+									<input type="checkbox" ng-model="mapstep4.share.browse">
+								</div>
+								<div class="col-md-offset-8">
+									<input type="checkbox" ng-model="mapstep4.person.browse">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row item">
+						<div class="col-md-5">
+							<label>Evaluating alternatives</label>
+						</div>
+						<div class="col-md-7">
+							<div class="row">
+								<!-- only when in Seq1, evaltype == individual, hide share.eval -->
+								<div class="col-md-offset-1 col-md-1">
+									<input type="checkbox" ng-model="mapstep4.share.eval" ng-show="evaltype == 'group'||seqtype == 'unrestricted'">
+								</div>
+								<div class="col-md-offset-8">
+									<input type="checkbox" ng-model="mapstep4.person.eval">
+								</div>
+							</div>
+							<!-- <div class="row" ng-show="seqtype == 'unrestricted'">
+								<div class="col-md-offset-1 col-md-1">
+									<input type="radio" name="evaltype" value="true" ng-model="share.eval">
+								</div>
+								<div class="col-md-offset-8">
+									<input type="radio" name="evaltype" value="true" ng-model="person.eval">
+								</div>
+							</div> -->
+						</div>
+					</div>
+					<div class="row item">
+						<div class="col-md-5">
+							<label>Add bookmark for alternatives (optional)</label>
+						</div>
+						<div class="col-md-7">
+							<div class="row">
+								<div class="col-md-offset-1 col-md-1">
+									<input type="radio" name="bookmark" value="true" ng-model="mapstep4.share.mark">
+								</div>
+								<div class="col-md-offset-8">
+									<input type="radio" name="bookmark" value="true" ng-model="mapstep4.person.mark">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row item">
+						<div class="col-md-5">
+							<label>Show progressbar</label>
+						</div>
+						<div class="col-md-7">
+							<div class="row">
+								<div class="col-md-offset-1 col-md-1">
+									<input type="checkbox" ng-model="mapstep4.share.progress">
+								</div>
+								<div class="col-md-offset-8">
+									<input type="checkbox" ng-model="mapstep4.person.progress">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row item">
+						<div class="col-md-5">
+							<label>Show timer</label>
+						</div>
+						<div class="col-md-7">
+							<div class="row">
+								<div class="col-md-offset-1 col-md-1">
+									<input type="checkbox" ng-model="mapstep4.share.timer">
+								</div>
+								<div class="col-md-offset-8">
+									<input type="checkbox" ng-model="mapstep4.person.timer">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row item">
+						<div class="col-md-5">
+							<label>Add shared comments space</label>
+						</div>
+						<div class="col-md-7">
+							<div class="row">
+								<div class="col-md-offset-1 col-md-1">
+									<input type="checkbox" ng-model="mapstep4.share.commonspace">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row item">
+						<div class="col-md-5">
+							<label>Writing comment to alternatives</label>
+						</div>
+						<div class="col-md-7">
+							<div class="row">
+								<div class="col-md-offset-1 col-md-1">
+								</div>
+								<div class="col-md-offset-8">
+									<input type="checkbox" ng-model="mapstep4.person.comment">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row item">
+						<div class="col-md-5">
+							<label>Writing arguments of the final choice on personal device</label>
+						</div>
+						<div class="col-md-7">
+							<div class="row">
+								<div class="col-md-offset-1 col-md-1">
+								</div>
+								<div class="col-md-offset-8">
+									<input type="checkbox" ng-model="mapstep4.person.argu">
+								</div>
+							</div>
+						</div>
+					</div>
+					<a class="btn btn-primary" class="formerStepBtn" ng-click="changeStep()" href="#/step3"> <span class="glyphicon glyphicon-chevron-left"></span> Back</a>
+					<a class="btn btn-primary pull-right" class="nextStepBtn" ng-click="submit()" href="#/">Save <span class="glyphicon glyphicon-floppy-disk"></span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

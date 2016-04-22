@@ -1,13 +1,15 @@
 <div class="container" ng-controller="CtrlStep3">
 	<div class="col-md-12">
-		<h3>Step3/4: add indicators to the activity</h3>
-		<button class="btn btn-default" data-toggle="collapse" data-target="#instruction">? Instruction</button>
-		<div id="instruction" class="panel-collapse collapse">
-			<p>Instruction: in this step, you can add indicators to the application. The indicators would be provided for students and teachers.</p>
-			<ul>
-				<li>Indicators for students: you can choose the indicators to help students' regulate their action and raise their awareness of the on-going activity. For example, in the restricted sequence, you can add the progress bar to help students better be aware of the progress. You can also add gamification elements to motivate students and gain entertainment to the activity. For example, a timer badge to encourage students to finish tasks within the limited time; or a "comment badge" to encourage students to submit more comments.</li>
-				<li>Indicators for teachers: in the activity, you will have a page to monitor your students behaviors. You can choose which indicators you want to monitor students behaviors. For example, to see the number of checking locations of each students, and the comments their add.</li>
-			</ul>
+		<div class="showStep">
+			<h3>Step3/4: add indicators to the activity</h3>
+			<button class="btn btn-default" data-toggle="collapse" data-target="#instruction">? Instruction</button>
+			<div id="instruction" class="panel-collapse collapse">
+				<p>Instruction: in this step, you can add indicators to the application. The indicators would be provided for students and teachers.</p>
+				<ul>
+					<li>Indicators for students: you can choose the indicators to help students' regulate their action and raise their awareness of the on-going activity. For example, in the restricted sequence, you can add the progress bar to help students better be aware of the progress. You can also add gamification elements to motivate students and gain entertainment to the activity. For example, a timer badge to encourage students to finish tasks within the limited time; or a "comment badge" to encourage students to submit more comments.</li>
+					<li>Indicators for teachers: in the activity, you will have a page to monitor your students behaviors. You can choose which indicators you want to monitor students behaviors. For example, to see the number of checking locations of each students, and the comments their add.</li>
+				</ul>
+			</div>
 		</div>
 		<!-- set the corrdination of the map -->
 		<div class="jumbotron" id="items">
@@ -39,10 +41,10 @@
 								</div>
 							</div>
 							<div class="form-group checkbox">
-								<div class="row col-md-4">
-									<label class="control-label bold"><input type="checkbox" ng-model="mapstep3.indiStu.badge.timer">Add group "timer badge"</label>
+								<div class="row col-md-5">
+									<label class="control-label bold pull-left"><input type="checkbox" ng-model="mapstep3.indiStu.badge.timer">Add group "timer badge"</label>
 								</div>
-								<div class="col-md-8" ng-show="mapstep3.indiStu.badge.timer==true">
+								<div class="col-md-7" ng-show="mapstep3.indiStu.badge.timer==true">
 									<div ng-repeat ="i in mapstep3.step track by $index">
 										<div class="form-group" ng-show="i">
 											<div class="checkboxMargin">
@@ -50,7 +52,7 @@
 													<label class="control-label"><input type="checkbox" ng-model="mapstep3.indiStu.timers[$index]">Step{{$index}}</label>
 												</div>
 												<div ng-show="mapstep3.indiStu.timers[$index]">
-													<div class="col-md-3">
+													<div class="col-md-4">
 														<input type="text" name="time{{$index}}" placeholder="mm:ss" class="form-control timers" ng-model="mapstep3.indiStu.timerValue[$index]">
 													</div>
 												</div>
