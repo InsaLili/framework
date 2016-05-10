@@ -4,10 +4,10 @@
 			<h3>Step3/3: add indicators to the activity</h3>
 			<button class="btn btn-default" data-toggle="collapse" data-target="#instruction">? Instruction</button>
 			<div id="instruction" class="panel-collapse collapse">
-				<p>Instruction: in this step, you can add indicators to the application. The indicators would be provided for students and teachers.</p>
+				<p>In this step, you can add indicators and gamification elements to the application. For example:</p>
 				<ul>
-					<li>Indicators for students: you can choose the indicators to help students' regulate their action and raise their awareness of the on-going activity. For example, in the restricted sequence, you can add the progress bar to help students better be aware of the progress. You can also add gamification elements to motivate students and gain entertainment to the activity. For example, a timer badge to encourage students to finish tasks within the limited time; or a "comment badge" to encourage students to submit more comments.</li>
-					<li>Indicators for teachers: in the activity, you will have a page to monitor your students behaviors. You can choose which indicators you want to monitor students behaviors. For example, to see the number of checking locations of each students, and the comments their add.</li>
+					<li>Indicators: indicators would be used to monitor students' action, meanwhile encourage students to regulate their behaviors. For example, you can add progress bar to the activity to help students be aware of the progress. </li>
+					<li>Gaminifaction elements: gamification elements are used to motivate students and gain entertainment to the task. For example, a timer badge to encourage students to finish tasks within limited time; or a "comment badge" to stimulate students to submit more comments.</li>
 				</ul>
 			</div>
 		</div>
@@ -17,7 +17,7 @@
 				<div class="col-md-offset-1 col-md-10">
 					<div class="row item">
 						<div class="col-md-4">
-							<h4>Indicators for students:</h4>
+							<h4>Indicators:</h4>
 						</div>
 						<div class="col-md-8">
 							<div class="form-group checkbox" ng-if="probar == 'individual'">
@@ -26,6 +26,13 @@
 							<div class="form-group checkbox" ng-if="probar == 'group'">
 								<label class="control-label bold"><input type="checkbox" ng-model="mapstep3.indiStu.groupPro">Add group evaluating progress</label>
 							</div>
+						</div>
+					</div>
+					<div class="row item">
+						<div class="col-md-4">
+							<h4>Gamification elements:</h4>
+						</div>
+						<div class="col-md-8">
 							<div class="form-group checkbox marginBottom">
 								<label class="control-label bold"><input type="checkbox" ng-model="commentbadge">Add individual "comment badge"</label>
 								<div ng-show="commentbadge">
@@ -60,22 +67,6 @@
 										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row item">
-						<div class="col-md-4">
-							<h4>Indicators for teachers:</h4>
-						</div>
-						<div class="col-md-8">
-							<div class="form-group checkbox marginBottom">
-								<label class="control-label bold"><input type="checkbox" ng-model="mapstep3.indiTea.browsed">Add number of the browsed alternatives of each student</label>
-							</div>
-							<div class="form-group checkbox">
-								<label class="control-label bold"><input type="checkbox" ng-model="mapstep3.indiTea.progre">Add evaluating progress</label>
-							</div>
-							<div class="form-group checkbox">
-								<label class="control-label bold"><input type="checkbox" ng-model="mapstep3.indiTea.comment">Add groups' comments</label>
 							</div>
 						</div>
 					</div>
@@ -175,7 +166,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk"></span>  Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>  Close</button>
               </div>
             </div>
           </div>

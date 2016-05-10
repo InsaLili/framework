@@ -1,4 +1,3 @@
-
 var mapSetModule = angular.module("ToolSetModule", ["leaflet-directive"]);
 
 mapSetModule.service('DataService', function(){

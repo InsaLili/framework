@@ -309,7 +309,7 @@
 							</div>
 						</div>
 					</div>
-					<a class="btn btn-primary pull-right" class="nextStepBtn" ng-click="changeStep($event)" href="#/step2">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
+					<a class="btn btn-primary pull-right" class="nextStepBtn" ng-click="changeStep($event)" ng-disabled="step1Form.$invalid" href="#/step2">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
 				</div>
 				<div class="col-md-5">
 					<h4>Preview of the map</h4>
