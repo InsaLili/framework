@@ -89,28 +89,29 @@
                   </label>
                   <div class="col-md-12">
 										<div class="col-md-12">
+											<!-- mapstep4.device 决定多少个设备 -->
 											<div class="radio deviceCompo">
-												<label class="bold"><input type="radio" name="devicecompo" value="shared" ng-model="mapstep4.device" required>Only shared display</label>
+												<label class="bold"><input type="radio" name="devicecompo" value="large" ng-model="mapstep4.device" required>Only shared display</label>
 											</div>
-											<div class="col-md-12 chooseDevice" ng-show="mapstep4.device == 'shared'">
+											<div class="col-md-12 chooseDevice" ng-show="mapstep4.device == 'large'">
 												<div class="col-md-5 marginTop7">
 													Choose the device type
 												</div>
 												<div class="col-md-7">
 													<div class="radio deviceType">
-														<label><input type="radio" name="sharetype" value="display" ng-model="mapstep4.share" required>Large display</label>
+														<label><input type="radio" name="sharetype" value="display" ng-model="mapstep4.shared" required>Large display</label>
 													</div>
 													<div class="radio deviceType">
-														<label><input type="radio" name="sharetype" value="tablet" ng-model="mapstep4.share" required>Tablet</label>
+														<label><input type="radio" name="sharetype" value="tablet" ng-model="mapstep4.shared" required>Tablet</label>
 													</div>
 												</div>
 											</div>
 										</div>
 										<div class="col-md-12">
 											<div class="radio deviceCompo">
-												<label class="bold"><input type="radio" name="devicecompo" value="person" ng-model="mapstep4.device" required>Only personal device</label>
+												<label class="bold"><input type="radio" name="devicecompo" value="small" ng-model="mapstep4.device" required>Only personal device</label>
 											</div>
-											<div class="col-md-12 chooseDevice" ng-show="mapstep4.device == 'person'">
+											<div class="col-md-12 chooseDevice" ng-show="mapstep4.device == 'small'">
 												<div class="col-md-5 marginTop7">
 													Choose the device type
 												</div>

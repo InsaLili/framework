@@ -144,25 +144,6 @@ mapSetModule.controller('ToolCtrl', [ "$scope", "DataService", function($scope, 
 				"device":"both",
 				"shared":"display",
 				"person":"tablet"
-				// "person":{
-				// 	"type": null,
-				// 	"browse": null,
-				// 	"comment": null,
-				// 	"argu": null,
-				// 	"mark": null,
-				// 	"eval": null,
-				// 	"progress": null,
-				// 	"timer": null
-				// 	},
-				// "share":{
-				// 	"type": null,
-				// 	"browse": null,
-				// 	"progress": null,
-				// 	"timer": null,
-				// 	"commonspace": null,
-				// 	"eval": null,
-				// 	"mark": null
-				// }
 			}
 		};
 		// index of new doc
