@@ -268,17 +268,17 @@
 												<div class="col-md-9">
 													<div class="row">
 														<div class="radio col-md-3">
-															<label><input type="radio" name="infoType" value="img" ng-model="mapstep1.infoType" required>Image</label>
+															<label><input type="radio" name="infoType{{$index}}" value="img" ng-model="info.type" required>Image</label>
 														</div>
-														<div class="col-md-9" ng-show="mapstep1.infoType == img">
-															<input type="file" class="form-control" accept="image/*" onchange="angular.element(this).scope().handleFiles(this)">
+														<div class="col-md-9" ng-show="info.type == 'img'">
+															<input type="file" class="form-control" accept="image/*" onchange="angular.element(this).scope().handleInfoFiles(this)">
 														</div>
 													</div>
 													<div class="row">
 														<div class="radio col-md-3">
-															<label><input type="radio" name="infoType" value="text" ng-model="mapstep1.infoType" required>Text</label>
+															<label><input type="radio" name="infoType{{$index}}" value="text" ng-model="info.type" required>Text</label>
 														</div>
-														<div class="col-md-9" ng-show="mapstep1.infoType == text">
+														<div class="col-md-9" ng-show="info.type == 'text'">
 															<textarea class="form-control" ng-model="info.data" rows="4"></textarea>
 														</div>
 													</div>
