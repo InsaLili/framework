@@ -253,14 +253,6 @@
 													<input type="text" class="form-control" ng-model="info.name">
 												</div>
 											</div>
-											<!-- <div class="form-group">
-												<label class="control-label col-md-3">
-													Add img (optional)
-												</label>
-												<div class="col-md-9">
-													<input type="file" class="form-control" accept="image/*" onchange="angular.element(this).scope().handleFiles(this)">
-												</div>
-											</div>			 -->		
 											<div class="form-group">
 												<label class="control-label col-md-3">
 													Information
@@ -279,7 +271,7 @@
 															<label><input type="radio" name="infoType{{$index}}" value="text" ng-model="info.type" required>Text</label>
 														</div>
 														<div class="col-md-9" ng-show="info.type == 'text'">
-															<textarea class="form-control" ng-model="info.data" rows="4"></textarea>
+															<textarea class="form-control" ng-model="info.text" rows="4"></textarea>
 														</div>
 													</div>
 												</div>
@@ -299,22 +291,29 @@
 											<input type="text" class="form-control" ng-model="newInfo.name">
 										</div>
 									</div>
-									<!-- <div class="form-group">
-										<label class="control-label col-md-3">
-											Add img (optional)
-										</label>
-										<div class="col-md-9">
-											<input type="file" class="form-control" accept="image/*" onchange="angular.element(this).scope().handleFiles(this, info)">
-										</div>
-									</div>	 -->				
 									<div class="form-group">
 										<label class="control-label col-md-3">
-											Data
+											Information
 										</label>
 										<div class="col-md-9">
-											<textarea class="form-control" ng-model="newInfo.data" rows="4"></textarea>
+											<div class="row">
+												<div class="radio col-md-3">
+													<label><input type="radio" name="newInfoType" value="img" ng-model="newInfo.type" required>Image</label>
+												</div>
+												<div class="col-md-9" ng-show="newInfo.type == 'img'">
+													<input type="file" class="form-control" accept="image/*" onchange="angular.element(this).scope().handleInfoFiles(this)">
+												</div>
+											</div>
+											<div class="row">
+												<div class="radio col-md-3">
+													<label><input type="radio" name="newInfoType" value="text" ng-model="newInfo.type" required>Text</label>
+												</div>
+												<div class="col-md-9" ng-show="newInfo.type == 'text'">
+													<textarea class="form-control" ng-model="newInfo.text" rows="4"></textarea>
+												</div>
+											</div>
 										</div>
-									</div>
+									</div>	
 									<div class="form-group saveBtn">
 										<div class="col-md-12">
 											<button class="btn btn-default pull-right" ng-click="addInfo()"><span class="glyphicon glyphicon-plus"></span>  Add</button>
