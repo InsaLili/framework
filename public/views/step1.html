@@ -93,7 +93,7 @@
 													Add img (optional)
 												</label>
 												<div class="col-md-9">
-													<input type="file" class="form-control" accept="image/*" onchange="angular.element(this).scope().handleMarkerFiles(this)">
+													<input type="file" class="form-control" accept="image/*" onchange="angular.element(this).scope().handleMarkerFiles(this)">{{marker.fileName}}
 												</div>
 											</div>					
 											<div class="form-group">
@@ -132,7 +132,7 @@
 											Laititude
 										</label>
 										<div class="col-md-9">
-											<input type="number" step="any" class="form-control" placeholder="ex: 12.3456" ng-model="newMarker.lat">
+											<input type="number" step="any" class="form-control" placeholder="ex: 12.3456" ng-model="newMarker.lat">{{newMarker.fileName}}
 										</div>
 									</div>	
 									<div class="form-group">
@@ -148,7 +148,7 @@
 											Add img (optional)
 										</label>
 										<div class="col-md-9">
-											<input type="file" class="form-control" accept="image/*" onchange="angular.element(this).scope().handleMarkerFiles(this)">
+											<input type="file" id="newMarkerImg" class="form-control" accept="image/*" onchange="angular.element(this).scope().handleMarkerFiles(this)">
 										</div>
 									</div>					
 									<div class="form-group">
@@ -301,7 +301,7 @@
 													<label><input type="radio" name="newInfoType" value="img" ng-model="newInfo.type">Image</label>
 												</div>
 												<div class="col-md-9" ng-show="newInfo.type == 'img'">
-													<input type="file" class="form-control" accept="image/*" onchange="angular.element(this).scope().handleInfoFiles(this)">
+													<input type="file" id="newInfoImg" class="form-control" accept="image/*" onchange="angular.element(this).scope().handleInfoFiles(this)">
 												</div>
 											</div>
 											<div class="row">
