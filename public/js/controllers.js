@@ -327,9 +327,9 @@ mapSetModule.controller('CtrlStep1', [ "$scope", "DataService",function($scope, 
 	$scope.handleMarkerFiles = function(element){
 		var file = element.files[0];
 		var index = angular.element(element).scope().$index;
-		var newMarker;
 		// if there is no index; it is a new marker
 		(index == undefined)?($scope.newMarker.fileName = file.name):($scope.mapstep1.markers[index].fileName = file.name);
+		$scope.$apply();
 
 		var reader = new FileReader();
 		// Closure to capture the file information.
@@ -345,18 +345,15 @@ mapSetModule.controller('CtrlStep1', [ "$scope", "DataService",function($scope, 
 	$scope.handleInfoFiles = function(element){
 		var file = element.files[0];
 		var index = angular.element(element).scope().$index;
-		var newInfo;
-		(index == undefined)?(newInfo = true):(newInfo = false);
-		// if no file is chosen, set photo value to undefined
-		if(file == undefined){
-			$scope.mapstep1.infos[index].photo = undefined;
-			return;
-		}
+		// if there is no index; it is a new info
+		(index == undefined)?($scope.newInfo.fileName = file.name):($scope.mapstep1.infos[index].fileName = file.name);
+		$scope.$apply();
+
 		var reader = new FileReader();
 		// Closure to capture the file information.
 		reader.onload = (function(theFile) {
 			return function(e) {
-				(newInfo == false)?($scope.mapstep1.infos[index].photo = e.target.result):($scope.newInfo.photo = e.target.result);
+				(index == undefined)?($scope.newInfo.photo = e.target.result):($scope.mapstep1.infos[index].photo = e.target.result);
 			};
 		})(file);
 		reader.readAsDataURL(file);

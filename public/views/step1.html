@@ -90,10 +90,14 @@
 											</div>	
 											<div class="form-group">
 												<label class="control-label col-md-3">
-													Add img (optional)
+													Image (optional)
 												</label>
 												<div class="col-md-9">
-													<input type="file" class="form-control" accept="image/*" onchange="angular.element(this).scope().handleMarkerFiles(this)">{{marker.fileName}}
+													<p class="filename" ng-bind="marker.fileName"></p>
+													<div class="btn btn-default btn-sm fileUpload">
+														<span>Choose image</span>
+														<input class="upload" type="file" accept="image/*" onchange="angular.element(this).scope().handleMarkerFiles(this)">
+													</div>
 												</div>
 											</div>					
 											<div class="form-group">
@@ -108,6 +112,7 @@
 									</div>
 								</div>
 							</div> 
+							<!-- add new marker -->
 							<button class="btn btn-primary" data-toggle="collapse" data-target="#newmarker">New marker</button>
 							<div id="newmarker" class="panel-collapse collapse" >
 								<div class="markerArea">
@@ -132,7 +137,7 @@
 											Laititude
 										</label>
 										<div class="col-md-9">
-											<input type="number" step="any" class="form-control" placeholder="ex: 12.3456" ng-model="newMarker.lat">{{newMarker.fileName}}
+											<input type="number" step="any" class="form-control" placeholder="ex: 12.3456" ng-model="newMarker.lat">
 										</div>
 									</div>	
 									<div class="form-group">
@@ -142,15 +147,19 @@
 										<div class="col-md-9">
 											<input type="text" class="form-control" placeholder="number (0-99); or one lower case letter" ng-model="newMarker.icon.icon">
 										</div>
-									</div>	
+									</div>
 									<div class="form-group">
 										<label class="control-label col-md-3">
-											Add img (optional)
+											Image (optional)
 										</label>
 										<div class="col-md-9">
-											<input type="file" id="newMarkerImg" class="form-control" accept="image/*" onchange="angular.element(this).scope().handleMarkerFiles(this)">
+											<p class="filename" ng-bind="newMarker.fileName"></p>
+											<div class="btn btn-default btn-sm fileUpload">
+												<span>Choose image</span>
+												<input class="upload" type="file" accept="image/*" onchange="angular.element(this).scope().handleMarkerFiles(this)">
+											</div>
 										</div>
-									</div>					
+									</div>			
 									<div class="form-group">
 										<label class="control-label col-md-3">
 											Data
@@ -260,15 +269,19 @@
 												<div class="col-md-9">
 													<div class="row">
 														<div class="radio col-md-3">
-															<label><input type="radio" name="infoType{{$index}}" value="img" ng-model="info.type" required>Image</label>
+															<label><input type="radio" name="infoType{{$index}}" value="img" ng-model="info.type">Image</label>
 														</div>
 														<div class="col-md-9" ng-show="info.type == 'img'">
-															<input type="file" class="form-control" accept="image/*" onchange="angular.element(this).scope().handleInfoFiles(this)">
+															<p class="filename">{{info.fileName}}</p>
+															<div class="btn btn-default btn-sm fileUpload">
+																<span>Choose image</span>
+																<input class="upload" type="file" accept="image/*" onchange="angular.element(this).scope().handleInfoFiles(this)">
+															</div>
 														</div>
 													</div>
 													<div class="row">
 														<div class="radio col-md-3">
-															<label><input type="radio" name="infoType{{$index}}" value="text" ng-model="info.type" required>Text</label>
+															<label><input type="radio" name="infoType{{$index}}" value="text" ng-model="info.type">Text</label>
 														</div>
 														<div class="col-md-9" ng-show="info.type == 'text'">
 															<textarea class="form-control" ng-model="info.text" rows="4"></textarea>
@@ -301,7 +314,11 @@
 													<label><input type="radio" name="newInfoType" value="img" ng-model="newInfo.type">Image</label>
 												</div>
 												<div class="col-md-9" ng-show="newInfo.type == 'img'">
-													<input type="file" id="newInfoImg" class="form-control" accept="image/*" onchange="angular.element(this).scope().handleInfoFiles(this)">
+													<p class="filename" ng-bind="newInfo.fileName"></p>
+													<div class="btn btn-default btn-sm fileUpload">
+														<span>Choose image</span>
+														<input class="upload" type="file" accept="image/*" onchange="angular.element(this).scope().handleInfoFiles(this)">
+													</div>
 												</div>
 											</div>
 											<div class="row">
