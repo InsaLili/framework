@@ -24,10 +24,10 @@ mapSetModule.directive("fileread", [function () {
 }]);
 
 mapSetModule.controller('ToolCtrl', [ "$scope", "DataService", function($scope, DataService) {
+	var db = new PouchDB('https://myoa.smileupps.com/myoa');
 	getApps = function(){
 		// if it's the first time to visit the page, get docs from db
 		if(DataService.apps == undefined){
-			var db = new PouchDB('https://myoa.smileupps.com/myoa');
 			db.allDocs({
 				include_docs: true,
 				attachements: true
@@ -70,9 +70,9 @@ mapSetModule.controller('ToolCtrl', [ "$scope", "DataService", function($scope, 
 	}
 	// create a new doc based on existing docs
 	$scope.replicateApp = function (index){
-		var db = new PouchDB('https://myoa.smileupps.com/myoa');
-		// clone the template doc to a new doc
-		var cloneApp = jQuery.extend({}, DataService.apps[index]);
+		// var db = new PouchDB('https://myoa.smileupps.com/myoa');
+		// deep copy the template doc to a new doc (if without true, it's shallow copy)
+		var cloneApp = jQuery.extend(true, {}, DataService.apps[index]);
 		// get the name of the new doc
 		cloneApp._id = $scope.appName;
 		// get rid of the former _rev; in order to store a new doc into db
@@ -86,7 +86,7 @@ mapSetModule.controller('ToolCtrl', [ "$scope", "DataService", function($scope, 
 	}
 	// create a totally new doc
 	$scope.createDoc = function (){
-		var db = new PouchDB('https://myoa.smileupps.com/myoa');
+		// var db = new PouchDB('https://myoa.smileupps.com/myoa');
 		// the template of a new doc
 		var newApp = {
 			_id: $scope.appName,
@@ -364,7 +364,7 @@ mapSetModule.controller('CtrlStep1', [ "$scope", "DataService",function($scope, 
     	$event.preventDefault();
     	return;
   	}
-		DataService.apps[_index].mapstep1 = $scope.mapstep1;
+		// DataService.apps[_index].mapstep1 = $scope.mapstep1;
 	}
 
 	creatMarker();
@@ -400,7 +400,7 @@ mapSetModule.controller('CtrlStep2', [ "$scope", "DataService",function($scope, 
     	$event.preventDefault();
     	return;
 		}
-		DataService.apps[_index].mapstep2 = $scope.mapstep2;
+		// DataService.apps[_index].mapstep2 = $scope.mapstep2;
 	}
 }]);
 
@@ -462,8 +462,8 @@ mapSetModule.controller('CtrlStep3', [ "$scope", "DataService", "$timeout",funct
 
 		($scope.commentbadge)?$scope.mapstep3.indiStu.badge.comment:($scope.mapstep3.indiStu.badge.comment = undefined);
 
-		DataService.apps[_index].mapstep3 = $scope.mapstep3;
-		DataService.apps[_index].mapstep4 = $scope.mapstep4;
+		// DataService.apps[_index].mapstep3 = $scope.mapstep3;
+		// DataService.apps[_index].mapstep4 = $scope.mapstep4;
 
 		return true;
 	}
