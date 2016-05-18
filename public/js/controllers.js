@@ -303,6 +303,12 @@ mapSetModule.controller('CtrlStep1', [ "$scope", "DataService",function($scope, 
 		$scope.mapstep1.markers[index].lat = args.model.lat;
 		$scope.mapstep1.markers[index].lng = args.model.lng;
 	});
+	$scope.$on("leafletDirectiveMap.dragend", function(){
+		var lat = $scope.mapstep1.map.lat;
+		var lng = $scope.mapstep1.map.lng;
+		$scope.newMarker.lat = lat;
+		$scope.newMarker.lng = lng;
+	});
 
 	$scope.deleteItem = function($event,item,items){
 		var index = items.indexOf(item);

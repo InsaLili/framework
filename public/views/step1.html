@@ -1,10 +1,10 @@
 <div class="container" ng-controller="CtrlStep1">
 	<div class="col-md-12">
 		<div class="showStep">
-			<h3>Step1/3: indentify the decision to be made, identify alternatives</h3>
+			<h3>Step1/3: identify the decision to be made, identify alternatives</h3>
 			<button class="btn btn-default" data-toggle="collapse" data-target="#instruction">? Instruction</button>
 			<div id="instruction" class="panel-collapse collapse">
-				<p>Define clearly the nature of the decision that must be taken by students. Identify all the alternaives (for example, in a trip planning task, the alternatives could be a list hotels). Provide information of each alternatives (e.g. the price, location or room type of a hotel). These information will be accessible on appointed devices (on personal device, shared display or both). You can also add information that are relevant for students to make decision reasonable (for example, budges, avaliable days or other constrains for the trip plannning task).</p>
+				<p>Define clearly the nature of the decision that must be taken by students. Identify all the alternatives (for example, in a trip planning task, the alternatives could be a list hotels). Provide information of each alternatives (e.g. the price, location or room type of a hotel). You can also add information that are relevant for students to make decision reasonable (for example, budges, available days or other constrains for the trip planning task).</p>
 			</div>
 		</div>
 		<!-- set the corrdination of the map -->
@@ -66,6 +66,14 @@
 											</div>
 											<div class="form-group">
 												<label class="control-label col-md-3">
+													Marker symbol
+												</label>
+												<div class="col-md-9">
+													<input type="text" class="form-control" placeholder="number (0-99); or one lower case letter" ng-model="marker.icon.icon">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="control-label col-md-3">
 													Longtitude
 												</label>
 												<div class="col-md-9">
@@ -82,14 +90,6 @@
 											</div>	
 											<div class="form-group">
 												<label class="control-label col-md-3">
-													Marker symbol
-												</label>
-												<div class="col-md-9">
-													<input type="text" class="form-control" placeholder="number (0-99); or one lower case letter" ng-model="marker.icon.icon">
-												</div>
-											</div>	
-											<div class="form-group">
-												<label class="control-label col-md-3">
 													Image (optional)
 												</label>
 												<div class="col-md-9">
@@ -102,7 +102,7 @@
 											</div>					
 											<div class="form-group">
 												<label class="control-label col-md-3">
-													Data
+													Information
 												</label>
 												<div class="col-md-9">
 													<textarea class="form-control" ng-model="marker.data" rows="4"></textarea>
@@ -126,6 +126,14 @@
 									</div>
 									<div class="form-group">
 										<label class="control-label col-md-3">
+											Marker symbol
+										</label>
+										<div class="col-md-9">
+											<input type="text" class="form-control" placeholder="number (0-99); or one lower case letter" ng-model="newMarker.icon.icon">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3">
 											Longtitude
 										</label>
 										<div class="col-md-9">
@@ -142,14 +150,6 @@
 									</div>	
 									<div class="form-group">
 										<label class="control-label col-md-3">
-											Marker symbol
-										</label>
-										<div class="col-md-9">
-											<input type="text" class="form-control" placeholder="number (0-99); or one lower case letter" ng-model="newMarker.icon.icon">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-md-3">
 											Image (optional)
 										</label>
 										<div class="col-md-9">
@@ -162,7 +162,7 @@
 									</div>			
 									<div class="form-group">
 										<label class="control-label col-md-3">
-											Data
+											Information
 										</label>
 										<div class="col-md-9">
 											<textarea class="form-control" ng-model="newMarker.data" rows="4"></textarea>
