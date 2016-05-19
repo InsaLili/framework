@@ -69,7 +69,7 @@
           <div class="col-md-12">
             <div class="docList" ng-repeat="class in classroom track by $index">
               <div class="docList">
-                <button class="btn btn-primary chooseClass" ng-click="chooseClass($event,$index)">Class {{class.number}}</button>
+                <button class="btn btn-primary chooseClass" ng-click="chooseClass($event,$index)">{{class.number}}</button>
 
                 <a class="btn btn-default" data-toggle="modal" data-target="#class-{{$index}}"><span class="glyphicon glyphicon-edit"></span></a>
                 <a class="btn btn-default" ng-click="deleteItem(class,classroom)"><span class="glyphicon glyphicon-trash"></span></a>
@@ -77,12 +77,12 @@
               <div id="class-{{$index}}" class="modal fade" role="dialog">
                 <div class="modal-dialog markerArea">
                   <div class="modal-header">
-                    <h4 class="modal-title">Class {{class.number}}</h4>
+                    <h4 class="modal-title">Name: {{class.number}}</h4>
                   </div>
                   <div class="modal-body">
                     <div class="row">
                       <label class="control-label col-md-2">
-                        Number
+                        Name
                       </label>
                       <div class="col-md-10">
                         <input type="text" class="form-control" ng-model="class.number">
@@ -204,12 +204,12 @@
             <div class="modal fade" role="dialog" id="addClass">
               <div class="modal-dialog markerArea">
                 <div class="modal-header">
-                  <h4 class="modal-title">Class {{newClass.number}}</h4>
+                  <h4 class="modal-title">Name: {{newClass.number}}</h4>
                 </div>
                 <div class="modal-body">
                   <div class="row">
                     <label class="control-label col-md-2">
-                      Number
+                      Name
                     </label>
                     <div class="col-md-10">
                       <input type="text" class="form-control" ng-model="newClass.number">
