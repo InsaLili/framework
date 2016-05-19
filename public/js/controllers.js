@@ -222,6 +222,9 @@ mapSetModule.controller('GroupCtrl', [ "$scope", "DataService",function($scope, 
 		this.newClass = {number:undefined, groups:[]};
 	}
 	$scope.deleteItem = function(item,items){
+		// confirm dialog to delete a doc
+		var txt = 'Do you want to delete "'+ item.name + '" ?';
+		if (confirm(txt) == false) return;
 		var index = items.indexOf(item);
 		items.splice(index,1);
 		console.log("delete");
