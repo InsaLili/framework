@@ -287,6 +287,14 @@
 															<textarea class="form-control" ng-model="info.text" rows="4"></textarea>
 														</div>
 													</div>
+													<div class="row">
+														<div class="radio col-md-3">
+															<label><input type="radio" name="infoType{{$index}}" value="link" ng-model="info.type">Link</label>
+														</div>
+														<div class="col-md-9" ng-show="info.type == 'link'">
+															<input class="form-control" type="text" placeholder="https://www.yourwebsite.com/" ng-model="info.link">
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -327,6 +335,14 @@
 												</div>
 												<div class="col-md-9" ng-show="newInfo.type == 'text'">
 													<textarea class="form-control" ng-model="newInfo.text" rows="4"></textarea>
+												</div>
+											</div>
+											<div class="row">
+												<div class="radio col-md-3">
+													<label for="newInfoType"><input type="radio" name="newInfoType" value="link" ng-model="newInfo.type">Link</label>
+												</div>
+												<div class="col-md-9" ng-show="newInfo.type == 'link'">
+													<input class="form-control" type="text" placeholder="https://www.yourwebsite.com/" ng-model="newInfo.link">
 												</div>
 											</div>
 										</div>
