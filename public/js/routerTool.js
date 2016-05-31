@@ -25,9 +25,6 @@ routerTool.config(['$routeProvider',
         });
 }]);
 
-routerTool.get('/upload', function (req, res) {
-    console.log("upload");
-});
 /**
  * 配置路由。
  * 注意这里采用的是ui-router这个路由，而不是ng原生的路由。
