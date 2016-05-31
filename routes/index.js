@@ -5,25 +5,14 @@
 
 var express = require('express');
 var router = express.Router();
-// console.log(data);
-
-/* GET home page. */
-// router.get('/map', function(req, res) {
-//     res.render('map', { title: 'Map' });
-// });
-
-// router.get('/player', function(req, res){
-//     res.render('player', {
-//     });
-// });
-
-// router.get('/framework', function(req, res){
-//     res.render('framework', {});
-// });
-
-// router.get('/upload', function(req, res){
-// 	console.log("upload");
-// });
+var group1 = [];
+var group2 = [];
+var group3 = [];
+var group4 = [];
+//store all groups' averages
+var allData = [];
+//flag of how many groups update data
+var allGroupNum = [0,0,0,0];
 router.get('/upload', function(req, res){
 	console.log("upload");
     fetchData(req.query);
