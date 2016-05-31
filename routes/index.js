@@ -5,6 +5,8 @@
 
 var express = require('express');
 var router = express.Router();
+var PouchDB = require('pouchdb');
+
 var group1 = [];
 var group2 = [];
 var group3 = [];
@@ -134,12 +136,12 @@ function averageData(group, groupNum){
 //        data contains all measure result average on all locations of one group
         data[i] = location;
     }
-    console.log("average");
+    console.log("average one group");
     console.log(data);
     allData[groupNum-1] = data;
     console.log("all data");
     console.log(allData);
-    uploadDB(groupNum, data);
+    // uploadDB(groupNum, data);
 
 }
 
@@ -188,7 +190,7 @@ function averageAllData(group, groupNum){
                         location[j] = avgValue.toFixed(1)+'°C';
                         break;
                     case 3:
-                        location[j] = avgValue.toFixed(1)+'mg/L';
+                        location[j] = avgValue.toFixed(1)+'%';
                         break;
                 }
             }
@@ -197,33 +199,39 @@ function averageAllData(group, groupNum){
 //        data contains all measure result average on all locations of one group
         data[i] = location;
     }
-    console.log("average");
+    console.log("average all group");
     console.log(data);
-    uploadDB(groupNum, data);
+    var alltext = [];
+    for(var k=0;k<4;k++){
+        var text = "Lumière : "+data[0][k]+"\nVent : "+data[1][k]+"\nTempérature : "+data[2][k]+"\nHumidité : "+data[3][k];
+        console.log("--------data of location-------");
+        console.log(text);
+        alltext.push(text);
+    }
+    uploadDB(alltext);
 }
 
 
 //put one group's data into database
-function uploadDB(groupNum, data){
+function uploadDB(data){
     console.log("update database");
-//    i means each location
-    for(var i=0; i<5; i++){
-//        as db.get won't be executed immediately, wrap with an anonymous function to store i in e
-        (function(e){
-            var locationNum = e+1;
-            db.get('measure/'+groupNum+'/'+locationNum).then(function(doc) {
-                console.log("locationNum = "+locationNum);
-                return db.put({
-                    group: groupNum,
-                    location: locationNum,
-                    Light: data[0][e],
-                    Wind: data[1][e],
-                    Temperature: data[2][e],
-                    PH: data[3][e]
-                }, 'measure/'+groupNum+'/'+locationNum, doc._rev);
-            });
-        })(i);
-    }
+    var db = new PouchDB('https://myoa.smileupps.com/myoa');
+    db.get('Cirque St Même').then(function(doc){
+        var mapstep1 = doc.mapstep1;
+        var mapstep2 = doc.mapstep2;
+        var mapstep3 = doc.mapstep3;
+        var mapstep4 = doc.mapstep4;
+        for(var i=0;i<mapstep1.markers.length;i++){
+            mapstep1.markers[i].data = data[i];
+        }
+        return db.put({
+            mapstep1: mapstep1,
+            mapstep2: mapstep2,
+            mapstep3: mapstep3,
+            mapstep4: mapstep4,
+        }, 'Cirque St Même', doc._rev);
+
+    });
 }
 module.exports = router;
 
