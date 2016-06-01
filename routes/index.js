@@ -6,7 +6,13 @@
 var express = require('express');
 var router = express.Router();
 var PouchDB = require('pouchdb');
-
+// store name of students
+var names=[];
+for(var n=0;n<4;n++){
+    var groupName = [];
+    names.push(groupName);
+}
+// store data of each group
 var group1 = [];
 var group2 = [];
 var group3 = [];
@@ -16,7 +22,7 @@ var allData = [];
 //flag of how many groups update data
 var allGroupNum = [0,0,0,0];
 router.get('/upload', function(req, res){
-	console.log("upload");
+	console.log("------new player------");
     fetchData(req.query);
 });
 //get one player data from url
@@ -25,6 +31,10 @@ function fetchData(data){
 //    parse data
     var group = parseInt(data.group);
     var player = data.player;
+    // store player's name
+    var name = data.name;
+    names[group-1][player-1] = name;
+
     var light = data.light.split('_');
     var wind = data.wind.split('_');
     var tem = data.tem.split('_');
@@ -79,7 +89,7 @@ function fetchData(data){
         sum += allGroupNum[i]; 
     }
     if(sum == 4){
-        averageAllData(allData, 5);
+        fetchAllData();
     }
 }
 
@@ -146,14 +156,13 @@ function averageData(group, groupNum){
 }
 
 //calculate the average of one group
-function averageAllData(group, groupNum){
+function fetchAllData(){
     console.log("average data for all groups");
-    console.log("group number"+groupNum);
-    console.log(group);
-    var group1 = group[0];
-    var group2 = group[1];
-    var group3 = group[2];
-    var group4 = group[3];
+    console.log(allData);
+    var group1 = allData[0];
+    var group2 = allData[1];
+    var group3 = allData[2];
+    var group4 = allData[3];
 
     var data=[];
 //    i means each type of measure, 1=light, 2=wind, 3=tem, 4=nitrate
@@ -208,13 +217,30 @@ function averageAllData(group, groupNum){
         console.log(text);
         alltext.push(text);
     }
-    uploadDB(alltext);
+    uploadName();
+    uploadData(alltext);
+}
+// upload students' names
+function uploadName(){
+    console.log("update students' names");
+    console.log(names);
+    var db = new PouchDB('https://myoa.smileupps.com/user');
+    db.get('setting').then(function(doc){
+        var classroom = doc.classroom;
+        var deploy = doc.deploy;
+        for(var i=0;i<4;i++){
+            classroom[deploy.classroom].groups[i].students = names[i];
+        }
+        return db.put({
+            classroom: classroom,
+            deploy: deploy
+        }, 'setting', doc._rev);
+    });
 }
 
-
 //put one group's data into database
-function uploadDB(data){
-    console.log("update database");
+function uploadData(data){
+    console.log("update measuring data");
     var db = new PouchDB('https://myoa.smileupps.com/myoa');
     db.get('Cirque St Même').then(function(doc){
         var mapstep1 = doc.mapstep1;
@@ -228,10 +254,18 @@ function uploadDB(data){
             mapstep1: mapstep1,
             mapstep2: mapstep2,
             mapstep3: mapstep3,
-            mapstep4: mapstep4,
+            mapstep4: mapstep4
         }, 'Cirque St Même', doc._rev);
 
     });
 }
+
+
+
+
+
+
+
+
 module.exports = router;
 
