@@ -77,7 +77,7 @@ function fetchData(data){
         case 4:
             group4[player-1] = groupData;
             console.log(group4);
-            if((typeof group4[0] !== 'undefined')&&(typeof group4[1] !== 'undefined')&&(typeof group4[2] !== 'undefined')){
+            if((typeof group4[0] !== 'undefined')&&(typeof group4[1] !== 'undefined')&&(typeof group4[2] !== 'undefined')&&(typeof group4[3] !== 'undefined')){
                 averageData(group4, group);
                 allGroupNum[3]=1;
             }
@@ -101,6 +101,9 @@ function averageData(group, groupNum){
     var player1 = group[0];
     var player2 = group[1];
     var player3 = group[2];
+    if(group[3] !== undefined){
+        var player4 = group[3];
+    }
 
     var data=[];
 //    i means each type of measure, 1=light, 2=wind, 3=tem, 4=nitrate
@@ -109,7 +112,11 @@ function averageData(group, groupNum){
 //        j means each location. We have five locations to update
         for(var j=0; j<5; j++){
 //            get one measure result on one location of three players, then put them into an array
-            var value = [parseFloat(player1[i][j]), parseFloat(player2[i][j]), parseFloat(player3[i][j])];
+            if(player3==undefined){
+                var value = [parseFloat(player1[i][j]), parseFloat(player2[i][j]), parseFloat(player3[i][j])];
+            }else{
+                var value = [parseFloat(player1[i][j]), parseFloat(player2[i][j]), parseFloat(player3[i][j]), parseFloat(player4[i][j])];
+            }
             var count = 0;
             var totalValue = 0;
 //            if value isNaN, exclude it
