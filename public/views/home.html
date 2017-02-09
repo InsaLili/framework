@@ -1,11 +1,11 @@
 <div class="container">
   <div class="jumbotron row">
     <div>
-      <h2>Deploy your experiment</h2>
+      <h2>Configure an activity</h2>
     </div>
     <div class="col-md-offset-2 col-md-8">
       <div>
-        <h3>Part 1: Choose an activity</h3>
+        <h3>Part 1: Configure an application</h3>
       </div>
       <div class="row item" ng-controller="ToolCtrl">
         <!-- list of the existing activities -->
@@ -18,16 +18,16 @@
         </div>
         <!-- create a new activity -->
         <div class="col-md-12">
-          <div class="caption"><p>Add a new activity</p></div>
+          <div class="caption"><p>Add a new application</p></div>
           <button class="btn btn-primary" data-toggle="collapse" data-target="#createAct"><span class="glyphicon glyphicon-plus"></span>  Add</button>
           <div class="col-md-12 panel-collapse collapse createArea" id="createAct">
             <form class="form-horizontal " role="form" name="form">
               <div class="form-group">
                 <div class="col-md-4">
                   <label class="control-label col-md-12 pull-right">
-                    Name of your new activity
+                    Name of your new application
                   </label>
-                  <div class="caption col-md-12"><p class="pull-right">(cannot be changed once created)</p></div>
+                  <!-- <div class="caption col-md-12"><p class="pull-right">(cannot be changed once created)</p></div> -->
                 </div>
                 <div class="col-md-4">
                   <input type="text" class="form-control" ng-model="appName" placeholder="name">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-md-8">
                   <div class="form-group">
-                    <label class="col-md-12"><input type="radio" name="template" value="true" ng-model="template"> Create an activity based on existing one</label>
+                    <label class="col-md-12"><input type="radio" name="template" value="true" ng-model="template"> Create an application based on existing one</label>
                     <div class="col-md-12" ng-show="template == 'true'">
                       <a class="btn btn-primary docList" ng-repeat="app in apps track by $index" ng-click="replicateApp($index)" href="#/step1">{{app._id}}</a>
                     </div>
@@ -50,8 +50,8 @@
                     <label class="col-md-12"><input type="radio" name="template" value="false" ng-model="template"> Create a new one (choose your application style)</label>
                     <div class="col-md-12" ng-show="template == 'false'">
                       <a class="btn btn-primary docList" ng-click="createDoc()" href="#/step1">Map</a>
-                      <a class="btn btn-primary docList">Figure</a>
-                      <a class="btn btn-primary docList">Text</a>
+                      <a class="btn btn-primary docList">Other</a>
+                      <!-- <a class="btn btn-primary docList">Text</a> -->
                     </div>
                   </div>
                 </div>
@@ -61,7 +61,7 @@
         </div>
       </div>
       <div>
-        <h3>Part 2: Choose your class</h3>
+        <h3>Part 2: Configure your class</h3>
       </div>
       <div ng-controller="GroupCtrl">
         <div class="row item">

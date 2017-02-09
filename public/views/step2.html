@@ -1,17 +1,17 @@
 <div class="container" ng-controller="CtrlStep2">
 	<div class="col-md-12">
 		<div class="showStep">
-			<h3>Step 2/3: define sequence and mechanism of the activity</h3>
+			<h3>Step 2/3: define the flow of the application</h3>
 			<button class="btn btn-default" data-toggle="collapse" data-target="#instruction">? Instruction</button>
 			<div id="instruction" class="panel-collapse collapse">
-				<p>A decision making process awlays contains following tasks. </p>
+				<p>A decision making process awlays contains following stages. </p>
 				<ul>
-					<li>Task 0 (optional): define criteria for evaluating alternatives. It is a prerequisite for a desicion making process. Besides the criteria you defined for students (in the former step) and you can let student add criteria by themselves.</li>
-					<li>Task 1: analyze and evaluate each alternative; </li>
-					<li>Task 2: compare alternatives and make decision; </li>
-					<li>Task 3 (optional): evaluate results. </li>
+					<li>Stage 1 (optional): define criteria for evaluating options.</li>
+					<li>Stage 2: analyze and evaluate each option; </li>
+					<li>Stage 3: compare options and make decision; </li>
+					<li>Stage 4 (optional): justification. </li>
 				</ul>
-				<p>In this part, you will define how students are going to carry on these tasks to finish the activity.</p>
+				<p>In this part, you will define how students are going to perform the activity.</p>
 			</div>
 		</div>
 		<!-- set the corrdination of the map -->
@@ -20,7 +20,7 @@
 				<div class="col-md-offset-1 col-md-10">
 					<form class="row item seqForm" id="reseqForm">
 						<div class="row radio col-md-4">
-							<h4><input type="radio" name="sequence" value="restricted" ng-model="mapstep2.seqtype">Seq 1: Restricted sequence</h4>
+							<h4><input type="radio" name="sequence" value="restricted" ng-model="mapstep2.seqtype">Restricted sequence</h4>
 							<div class="row caption">
 <!-- 								<ul>
 									<li>T0 (optional): define criteria for evaluating alternatives;</li>
@@ -28,7 +28,7 @@
 									<li>T2: compare alternatives and make decision;</li>
 									<li>T3: evaluate results.</li>
 								</ul> -->
-								<p>(Students have to evaluate all the alternatives in Step 1 before they can move to Step 2 to choose the alternative.)</p>
+								<p>(Students have to evaluate all the options in the restricted sequence before they can move to the next stage to make the choice.)</p>
 							</div>
 						</div>
 						<div class="col-md-8" ng-show="mapstep2.seqtype == 'restricted'">
@@ -38,7 +38,7 @@
 									<div class="panel-heading">
 										<h4 class="panel-title" ng-class="{grey: !mapstep2.reseq.s0.exist}">
 										    <input type="checkbox" ng-model="mapstep2.reseq.s0.exist">
-										    <a data-toggle="collapse" data-parent="#s1steps" data-target="#s1s0">Step 0 (optional): define criteria for evaluating alternatives</a>
+										    <a data-toggle="collapse" data-parent="#s1steps" data-target="#s1s0">Stage 1 (optional): define criteria for evaluating options</a>
 										</h4>
 									</div>
 									<div id="s1s0" ng-show="mapstep2.reseq.s0.exist" class="panel-collapse collapse">
@@ -70,7 +70,7 @@
 								<div class="panel panel-default">
 									<div class="panel-heading">
 										<h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#s1steps" data-target="#s1s1">Step 1: analyze and evaluate each alternative</a>
+											<a data-toggle="collapse" data-parent="#s1steps" data-target="#s1s1">Stage 2: analyze and evaluate each option</a>
 
 										  <!-- <a  data-toggle="collapse" data-parent="#s1steps" href="#s1s1">Step 1: analyze and evaluate each alternative</a> -->
 										</h4>
@@ -106,10 +106,10 @@
 												</div>
 												<div class="col-md-12 btn-group">
 													<div class="radio col-md-12">
-														<label><input type="radio" name="t1eval" value="individual" ng-model="mapstep2.reseq.s1.eval" required>E1: Each student needs to evaluate all the alternatives</label>
+														<label><input type="radio" name="t1eval" value="individual" ng-model="mapstep2.reseq.s1.eval" required>E1: Each student needs to evaluate all the options</label>
 													</div>
 													<div class="radio col-md-12">
-														<label><input type="radio" name="t1eval" value="group" ng-model="mapstep2.reseq.s1.eval" required>E2: A group needs to evaluate all the alternatives</label>
+														<label><input type="radio" name="t1eval" value="group" ng-model="mapstep2.reseq.s1.eval" required>E2: A group need to evaluate all the options</label>
 													</div>
 												</div>
 											</div>	
@@ -132,7 +132,7 @@
 								<div class="panel panel-default">
 									<div class="panel-heading">
 										<h4 class="panel-title">
-										  <a data-toggle="collapse" data-parent="#s1steps" data-target="#s1s2">Step 2: compare alternatives and make decision</a>
+										  <a data-toggle="collapse" data-parent="#s1steps" data-target="#s1s2">Stage 3: compare options and make decision</a>
 										</h4>
 									</div>
 									<div class="panel-collapse collapse" id="s1s2">
@@ -161,15 +161,15 @@
 											<div class="form-group">
 												<div class="col-md-12">
 													<label class="control-label pull-left">
-														Choose how many alternatives you want students to choose in the end:
+														Choose how many options you want students to choose in the end:
 													</label>
 												</div>
 												<div class="col-md-12 btn-group">
 													<div class="radio col-md-12">
-														<label><input type="radio" name="t2alt" value="one" ng-model="mapstep2.reseq.s2.alter" required>Choose only one alternative</label>
+														<label><input type="radio" name="t2alt" value="one" ng-model="mapstep2.reseq.s2.alter" required>Choose only one option</label>
 													</div>
 													<div class="radio col-md-12">
-														<label><input type="radio" name="t2alt" value="multiple" ng-model="mapstep2.reseq.s2.alter" required>Choose multiple dlternatives</label>
+														<label><input type="radio" name="t2alt" value="multiple" ng-model="mapstep2.reseq.s2.alter" required>Choose multiple options</label>
 													</div>
 												</div>
 											</div>	
@@ -182,7 +182,7 @@
 									<div class="panel-heading">
 										<h4 class="panel-title" ng-class="{grey: !mapstep2.reseq.s3.exist}">
 										    <input type="checkbox" ng-model="mapstep2.reseq.s3.exist">
-										  	<a data-toggle="collapse" data-parent="#s1steps" data-target="#s1s3">Step 3 (optional): evaluate resulats</a>
+										  	<a data-toggle="collapse" data-parent="#s1steps" data-target="#s1s3">Stage 4 (optional): justification</a>
 										</h4>
 									</div>
 									<div class="panel-collapse collapse" id="s1s3">
@@ -217,9 +217,9 @@
 					</form>
 					<form class="row item seqForm" id="unseqForm">
 						<div class="row radio col-md-4">
-							<h4><input type="radio" name="sequence" value="unrestricted" ng-model="mapstep2.seqtype">Seq2: Unestricted sequence</h4>				
+							<h4><input type="radio" name="sequence" value="unrestricted" ng-model="mapstep2.seqtype">Unestricted sequence</h4>				
 							<div class="row caption">
-								<p>(Evaluating and choosing tasks are mixed. Students can make the choice while they are checking and evaluating alternatives. In this sequence, each alternative only needs to be evaluated once.)</p>
+								<p>(Evaluating and choosing stages are mixed. Students can make the choice while they are checking and evaluating options.</p>
 							</div>
 						</div>
 						<div class="col-md-8" ng-show="mapstep2.seqtype == 'unrestricted'">
@@ -229,7 +229,7 @@
 									<div class="panel-heading">
 										<h4 class="panel-title" ng-class="{grey: !mapstep2.unseq.s0.exist}">
 										    <input type="checkbox" ng-model="mapstep2.unseq.s0.exist">
-										    Step 0 (optional): define criteria for evaluating alternatives
+										    Stage 1 (optional): define criteria for evaluating options
 										</h4>
 									</div>
 									<div id="s0t0un" ng-show="mapstep2.unseq.s0.exist">
@@ -260,7 +260,7 @@
 								<div class="panel panel-default">
 									<!-- step title -->
 									<div class="panel-heading">
-										<h4 class="panel-title">Step 1: analyze, evaluate alternatives and make decision</h4>
+										<h4 class="panel-title">Stage 2: analyze, evaluate alternatives and make decision</h4>
 									</div>
 									<div class="form-horizontal markerArea" role="form">
 										<!-- customised title -->
@@ -302,7 +302,7 @@
 									<div class="panel-heading">
 										<h4 class="panel-title" ng-class="{grey: !mapstep2.unseq.s2.exist}">
 										    <input type="checkbox" ng-model="mapstep2.unseq.s2.exist">
-										    Step 2 (optional): evaluate results
+										    Stage 3 (optional): justification
 										</h4>
 									</div>
 									<div id="s2t3" ng-show="mapstep2.unseq.s2.exist">
