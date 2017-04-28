@@ -18,16 +18,128 @@
 		<div class="jumbotron" id="items">
 			<div class="row">
 				<div class="col-md-offset-1 col-md-10">
+										<form class="row item seqForm" id="unseqForm">
+						<div class="row radio col-md-4">
+							<h4><input type="radio" name="sequence" value="unrestricted" ng-model="mapstep2.seqtype">Unrestricted sequence</h4>				
+							<div class="row caption">
+								<p>(Evaluating and choosing stages are mixed. Students can make the choice while they are checking and evaluating options.)</p>
+							</div>
+						</div>
+						<div class="col-md-8" ng-show="mapstep2.seqtype == 'unrestricted'">
+							<div class="panel-group col-md-12">
+								<div class="panel panel-default">
+									<!-- optional step0 -->
+									<div class="panel-heading">
+										<h4 class="panel-title" ng-class="{grey: !mapstep2.unseq.s0.exist}">
+										    <input type="checkbox" ng-model="mapstep2.unseq.s0.exist">
+										    Stage 1 (optional): define criteria for evaluating options
+										</h4>
+									</div>
+									<div id="s0t0un" ng-show="mapstep2.unseq.s0.exist">
+										<div class="form-horizontal markerArea"role="form">
+											<!-- cuostomized title -->
+											<div class="form-group">
+												<label class="control-label col-md-3" for="uns0title">
+													Title
+												</label>
+												<div class="col-md-9">
+													<input type="text" class="form-control" name="uns0title" ng-model="mapstep2.unseq.s0.title" required>
+												</div>
+											</div>
+											<!-- pop-up dialogue -->
+											<div class="form-group">
+												<label class="control-label col-md-3" for="uns0dlg">
+													Guidance in the 
+													<br>
+													pop-up dialogue
+												</label>
+												<div class="col-md-9">
+													<textarea class="form-control" name="uns0dlg" ng-model="mapstep2.unseq.s0.dlg" placeholder="Detailed description in the pop-up dialog" rows="4" required></textarea>
+												</div>
+											</div>					
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<!-- step title -->
+									<div class="panel-heading">
+										<h4 class="panel-title">Stage 2: analyze, evaluate alternatives and make decision</h4>
+									</div>
+									<div class="form-horizontal markerArea" role="form">
+										<!-- customised title -->
+										<div class="form-group">
+											<label class="control-label col-md-3" for="uns1title">
+												Title
+											</label>
+											<div class="col-md-9">
+												<input type="text" class="form-control" name="uns1title" ng-model="mapstep2.unseq.s1.title" required>
+											</div>
+										</div>
+										<!-- pop-up dialogue -->
+										<div class="form-group">
+											<label class="control-label col-md-3" for="uns1dlg">
+												Guidance in the 
+												<br>
+												pop-up dialogue
+											</label>
+											<div class="col-md-9">
+												<textarea class="form-control" name="uns1dlg" ng-model="mapstep2.unseq.s1.dlg" placeholder="Detailed description in the pop-up dialog" rows="4" required></textarea>
+											</div>
+										</div>
+										<!-- choose evaluation scale -->
+										<div class="form-group">
+											<div class="col-md-6">
+												<label class="control-label">Identify the evaluation scale (number of stars):</label>
+											</div>
+											<div class="col-md-2">
+												<input type="number" name="unstars" step="any" class="form-control" ng-model="mapstep2.unseq.s1.scale" required>
+											</div>
+											<div class="col-md-2">
+												<label class="control-label">stars</label>
+											</div>
+										</div>				
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<!-- step title -->
+									<div class="panel-heading">
+										<h4 class="panel-title" ng-class="{grey: !mapstep2.unseq.s2.exist}">
+										    <input type="checkbox" ng-model="mapstep2.unseq.s2.exist">
+										    Stage 3 (optional): justification
+										</h4>
+									</div>
+									<div id="s2t3" ng-show="mapstep2.unseq.s2.exist">
+										<div class="form-horizontal markerArea"role="form">
+											<!-- customized title -->
+											<div class="form-group">
+												<label class="control-label col-md-3" for="uns2title">
+													Title
+												</label>
+												<div class="col-md-9">
+													<input type="text" class="form-control" name="uns2title" ng-model="mapstep2.unseq.s2.title" required>
+												</div>
+											</div>
+											<!-- pop-up dialogue -->
+											<div class="form-group">
+												<label class="control-label col-md-3" for="uns2dlg">
+													Guidance in the 
+													<br>
+													pop-up dialogue
+												</label>
+												<div class="col-md-9">
+													<textarea class="form-control" name="uns2dlg" ng-model="mapstep2.unseq.s2.dlg" placeholder="Detailed description in the pop-up dialog" rows="4" required></textarea>
+												</div>
+											</div>					
+										</div>
+									</div>
+								</div>
+							</div> 
+						</div>
+					</form>
 					<form class="row item seqForm" id="reseqForm">
 						<div class="row radio col-md-4">
 							<h4><input type="radio" name="sequence" value="restricted" ng-model="mapstep2.seqtype">Restricted sequence</h4>
 							<div class="row caption">
-<!-- 								<ul>
-									<li>T0 (optional): define criteria for evaluating alternatives;</li>
-									<li>T1: analyze and evaluate each alternative;</li>
-									<li>T2: compare alternatives and make decision;</li>
-									<li>T3: evaluate results.</li>
-								</ul> -->
 								<p>(Students have to evaluate all the options in the restricted sequence before they can move to the next stage to make the choice.)</p>
 							</div>
 						</div>
@@ -215,124 +327,7 @@
 							</div> 
 						</div>
 					</form>
-					<form class="row item seqForm" id="unseqForm">
-						<div class="row radio col-md-4">
-							<h4><input type="radio" name="sequence" value="unrestricted" ng-model="mapstep2.seqtype">Unestricted sequence</h4>				
-							<div class="row caption">
-								<p>(Evaluating and choosing stages are mixed. Students can make the choice while they are checking and evaluating options.</p>
-							</div>
-						</div>
-						<div class="col-md-8" ng-show="mapstep2.seqtype == 'unrestricted'">
-							<div class="panel-group col-md-12">
-								<div class="panel panel-default">
-									<!-- optional step0 -->
-									<div class="panel-heading">
-										<h4 class="panel-title" ng-class="{grey: !mapstep2.unseq.s0.exist}">
-										    <input type="checkbox" ng-model="mapstep2.unseq.s0.exist">
-										    Stage 1 (optional): define criteria for evaluating options
-										</h4>
-									</div>
-									<div id="s0t0un" ng-show="mapstep2.unseq.s0.exist">
-										<div class="form-horizontal markerArea"role="form">
-											<!-- cuostomized title -->
-											<div class="form-group">
-												<label class="control-label col-md-3" for="uns0title">
-													Title
-												</label>
-												<div class="col-md-9">
-													<input type="text" class="form-control" name="uns0title" ng-model="mapstep2.unseq.s0.title" required>
-												</div>
-											</div>
-											<!-- pop-up dialogue -->
-											<div class="form-group">
-												<label class="control-label col-md-3" for="uns0dlg">
-													Guidance in the 
-													<br>
-													pop-up dialogue
-												</label>
-												<div class="col-md-9">
-													<textarea class="form-control" name="uns0dlg" ng-model="mapstep2.unseq.s0.dlg" placeholder="Detailed description in the pop-up dialog" rows="4" required></textarea>
-												</div>
-											</div>					
-										</div>
-									</div>
-								</div>
-								<div class="panel panel-default">
-									<!-- step title -->
-									<div class="panel-heading">
-										<h4 class="panel-title">Stage 2: analyze, evaluate alternatives and make decision</h4>
-									</div>
-									<div class="form-horizontal markerArea" role="form">
-										<!-- customised title -->
-										<div class="form-group">
-											<label class="control-label col-md-3" for="uns1title">
-												Title
-											</label>
-											<div class="col-md-9">
-												<input type="text" class="form-control" name="uns1title" ng-model="mapstep2.unseq.s1.title" required>
-											</div>
-										</div>
-										<!-- pop-up dialogue -->
-										<div class="form-group">
-											<label class="control-label col-md-3" for="uns1dlg">
-												Guidance in the 
-												<br>
-												pop-up dialogue
-											</label>
-											<div class="col-md-9">
-												<textarea class="form-control" name="uns1dlg" ng-model="mapstep2.unseq.s1.dlg" placeholder="Detailed description in the pop-up dialog" rows="4" required></textarea>
-											</div>
-										</div>
-										<!-- choose evaluation scale -->
-										<div class="form-group">
-											<div class="col-md-6">
-												<label class="control-label">Identify the evaluation scale (number of stars):</label>
-											</div>
-											<div class="col-md-2">
-												<input type="number" name="unstars" step="any" class="form-control" ng-model="mapstep2.unseq.s1.scale" required>
-											</div>
-											<div class="col-md-2">
-												<label class="control-label">stars</label>
-											</div>
-										</div>				
-									</div>
-								</div>
-								<div class="panel panel-default">
-									<!-- step title -->
-									<div class="panel-heading">
-										<h4 class="panel-title" ng-class="{grey: !mapstep2.unseq.s2.exist}">
-										    <input type="checkbox" ng-model="mapstep2.unseq.s2.exist">
-										    Stage 3 (optional): justification
-										</h4>
-									</div>
-									<div id="s2t3" ng-show="mapstep2.unseq.s2.exist">
-										<div class="form-horizontal markerArea"role="form">
-											<!-- customized title -->
-											<div class="form-group">
-												<label class="control-label col-md-3" for="uns2title">
-													Title
-												</label>
-												<div class="col-md-9">
-													<input type="text" class="form-control" name="uns2title" ng-model="mapstep2.unseq.s2.title" required>
-												</div>
-											</div>
-											<!-- pop-up dialogue -->
-											<div class="form-group">
-												<label class="control-label col-md-3" for="uns2dlg">
-													Guidance in the 
-													<br>
-													pop-up dialogue
-												</label>
-												<div class="col-md-9">
-													<textarea class="form-control" name="uns2dlg" ng-model="mapstep2.unseq.s2.dlg" placeholder="Detailed description in the pop-up dialog" rows="4" required></textarea>
-												</div>
-											</div>					
-										</div>
-									</div>
-								</div>
-							</div> 
-						</div>
-					</form>
+
 					<a class="btn btn-primary" class="formerStepBtn" ng-click="changeStep($event)" href="#/step1"> <span class="glyphicon glyphicon-chevron-left"></span> Back</a>
 					<a class="btn btn-primary pull-right" class="nextStepBtn" ng-click="changeStep($event)" href="#/step3">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
 				</div>
